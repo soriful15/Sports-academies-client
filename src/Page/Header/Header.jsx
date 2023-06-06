@@ -39,7 +39,7 @@ const Header = () => {
                         </ul>
                     </div>
                     <img className='rounded-full w-20' src={logo} alt="" />
-                    <a className=" normal-case text-xl px-2">Sports academies</a>
+                    <a className=" normal-case text-xl px-2 text-violet-600">Sports academies</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
