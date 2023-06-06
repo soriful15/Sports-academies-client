@@ -37,7 +37,8 @@ const Header = () => {
     return (
         <>
 
-            <div className="navbar bg-lime-100 mx-auto lg:px-28 py-10  mt-6 ">
+            
+            <div className="navbar  lg:px-28 py-5 fixed z-10  bg-opacity-30 bg-black text-white">
 
 
                 <div className="navbar">
@@ -53,8 +54,8 @@ const Header = () => {
                         <img className='rounded-full w-20' src={logo} alt="" />
                         <a className=" normal-case text-xl px-2 text-violet-600">Sports academies</a>
                     </div>
-                    <div className="navbar-center hidden lg:flex">
-                        <ul className="menu menu-horizontal px-1">
+                    <div className="navbar-center hidden lg:flex ">
+                        <ul className="menu menu-horizontal px-1 ">
                             {navBarOptions}
                         </ul>
                     </div>
@@ -63,7 +64,7 @@ const Header = () => {
 
                             <div className="navbar-end ">
                                 <div className="dropdown dropdown-end">
-                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
                                         <div className="w-10 rounded-full">
                                             <img data-toggle="tooltip"
                                                 title={user && user.displayName} src={user && user.photoURL} />
