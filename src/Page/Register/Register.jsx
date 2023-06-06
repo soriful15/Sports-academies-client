@@ -83,11 +83,12 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input {...register("email", { required: true })} type="email" name="email" placeholder="email" className="input input-bordered" required />
+                                <input {...register("email", { required: true })} type="email" name="email" placeholder="email" className="input input-bordered"  />
                                 {errors.email && <span className='text-red-600'>Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
+                                <span className="label-text">Password</span>
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered" {...register("password", { required: true, minLength: 6, maxLength: 6, pattern: /(?=.*[A-Z])(?=.*?[#?!@$ %^&*-])/ })} />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>password name is required</p>}
