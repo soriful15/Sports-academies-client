@@ -4,7 +4,7 @@ import { FaPhone, FaMapMarkerAlt, } from 'react-icons/fa';
 const Footer = () => {
     return (
         <>
-            <footer className="footer p-10 bg-lime-100  text-base-content mt-10">
+            <footer className="footer p-10 bg-slate-100  text-base-content mt-10">
                 <div>
                     <img src={logo} className='rounded-full w-24' alt="" />
                     <p> <span className='lg:text-2xl text-violet-600'>Sports academies</span><br /> ShoniAkhra, Dhaka-1205 Bangladesh</p>
