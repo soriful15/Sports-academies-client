@@ -30,9 +30,12 @@ const Header = () => {
         <li> <NavLink to='/classes' title='Home Link' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Classes
         </NavLink></li>
-        <li> <NavLink to='/dashboard/addClasses' title='Home Link' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+        
+        {
+            user && <li> <NavLink to='/dashboard' title='Home Link' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Dashboard
         </NavLink></li>
+        }
 
 
     </>

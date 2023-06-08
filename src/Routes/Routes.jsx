@@ -10,7 +10,8 @@ import Register from '../Page/Register/Register';
 import Dashboard from '../Page/Dashboard/Dashboard';
 import Instructors from '../Page/Instructors/Instructors';
 import AddClass from '../Page/Dashboard/AddClass/AddClass';
-
+import AllUsers from '../Page/Dashboard/AllUsers/AllUsers';
+import PrivateRoute from '../Routes/PrivateRoute'
 
 const router = createBrowserRouter([
   {
@@ -42,11 +43,15 @@ const router = createBrowserRouter([
 
   {
     path: 'dashboard',
-    element: <Dashboard></Dashboard>,
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
       {
         path:'addClasses',
         element:<AddClass></AddClass>
+      },
+      {
+        path:'allUsers',
+        element:<AllUsers></AllUsers>
       }
     ]
   },
