@@ -20,7 +20,7 @@ const Register = () => {
                 updateUserProfile(data.name, data.photo, data.email)
                     .then(() => {
                         // console.log('update Profile')
-                        const saveUser = { instructor_name: data.name, instructor_image: data.photoURL, instructor_email: data.email, }
+                        const saveUser = { name: data.name, image: data.photoURL, email: data.email, }
                         fetch('http://localhost:4000/users', {
                             method: 'POST',
                             headers: { 'content-type': 'application/json' },
