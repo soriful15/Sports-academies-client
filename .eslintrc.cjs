@@ -17,6 +17,7 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": 0,
     "react-hooks/exhaustive-deps": 0,
-    "react/no-unknown-property": ['error', { ignore: ['css'] }]
+    "react/no-unknown-property": ['error', { ignore: ['css'] }],
+
   },
 }

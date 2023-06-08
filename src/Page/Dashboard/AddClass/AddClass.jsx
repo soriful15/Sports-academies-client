@@ -60,7 +60,7 @@ const AddClass = () => {
 
             <div className='container mx-auto'>
 
-                <h1 className='text-center mt-10 text-4xl text-sky-800 '>Add A Toy</h1>
+                <h1 className='text-center mt-10 text-4xl text-sky-800 '>Add  Classes</h1>
 
 
                 <form onSubmit={handleSubmit(onSubmit)} className='mt-16'>
