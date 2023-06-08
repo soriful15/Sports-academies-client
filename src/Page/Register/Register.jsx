@@ -8,28 +8,39 @@ import Swal from 'sweetalert2';
 import SocialLogin from '../../SocailLogin/SocialLogin';
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)  
         createUser(data.email, data.password)
             .then(result => {
                 const createdUser = result.user
                 console.log(createdUser)
-                console.log(createdUser)
-                reset()
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Register Successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                navigate('/')
-
                 updateUserProfile(data.name, data.photo, data.email)
                     .then(() => {
-                        console.log('update Profile')
+                        // console.log('update Profile')
+                        const saveUser = { instructor_name: data.name, instructor_image: data.photoURL, instructor_email: data.email, }
+                        fetch('http://localhost:4000/users', {
+                            method: 'POST',
+                            headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created Successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            })
+
                     })
                     .catch((error) => {
                         console.log(error.message)
@@ -75,7 +86,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input {...register("photo", { required: true })} type="text" name="photo" placeholder="Enter your Photo url" className="input input-bordered" />
+                                <input {...register("photoURL", { required: true })} type="text" name="photoURL" placeholder="Enter your Photo url" className="input input-bordered" />
                                 {errors.PhotoURL && <span className='text-red-600'>PhotoUrl is required</span>}
 
                             </div>
@@ -83,19 +94,28 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input {...register("email", { required: true })} type="email" name="email" placeholder="email" className="input input-bordered"  />
+                                <input {...register("email", { required: true })} type="email" name="email" placeholder="email" className="input input-bordered" />
                                 {errors.email && <span className='text-red-600'>Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                <span className="label-text">Password</span>
+                                    <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name="password" placeholder="password" className="input input-bordered" {...register("password", { required: true, minLength: 6, maxLength: 6, pattern: /(?=.*[A-Z])(?=.*?[#?!@$ %^&*-])/ })} />
+                                <input type="password" name="password" placeholder="password" className="input input-bordered" {...register("password", { required: true, minLength: 6, maxLength: 16, pattern: /(?=.*[A-Z])(?=.*?[#?!@$ %^&*-])/ })} />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>password name is required</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>password must be 6 Characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className='text-red-600'>password must be less then 6 Characters</p>}
                                 {errors.password?.type === 'pattern' && <p className='text-red-600'>password must be  one upperCase & one special Characters</p>}
                             </div>
+
+
+                            {/* <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Confirm Password</span>
+                                </label>
+                                <input {...register("confirmPassword", { required: true })} type="password" name="confirmPassword" placeholder="Confirm Password" className="input input-bordered"  />
+                                {errors.confirmPassword !== errors.password  && <span className='text-red-600'>Confirm Password is required</span>}
+                            </div> */}
 
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="SingUp" />

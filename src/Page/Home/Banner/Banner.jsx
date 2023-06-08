@@ -14,9 +14,10 @@ import banner3 from '../../../assets/bannerPic/basket.webp'
 
 const Banner = () => {
     return (
-        <div className="carousel w-full h-[600px] ">
+        // <div className="carousel w-full h-[600px] h-full ">
+        <div className="carousel w-full  h-[800px] ">
             <div id="slide1" className="carousel-item relative w-full">
-                <img src={banner1} className="w-full rounded-2xl " />
+                <img src={banner1} className="w-full " />
                 <div className="absolute flex items-center h-full  gap-5 transform  left-0  top-0   rounded-2xl  ">
                     <div className='space-y-7 md:w-1/2 md:pl-12 pl-5 '>
                         <h2 className='text-xl lg:text-6xl font-bold text-teal-500'>Sporting Schools Cricket Program  </h2>
@@ -33,7 +34,7 @@ const Banner = () => {
                 </div>
             </div>
             <div id="slide2" className="carousel-item relative w-full">
-                <img src={banner2} className="w-full rounded-2xl" />
+                <img src={banner2} className="w-full" />
                 <div className="absolute flex items-center h-full  gap-5 transform  left-0  top-0   rounded-2xl">
                     <div className='space-y-7 md:w-1/2 md:pl-12 pl-5 '>
                     <h2 className='text-xl lg:text-6xl font-bold text-teal-500'>Sporting Schools FootBall Program  </h2>
@@ -47,7 +48,7 @@ const Banner = () => {
                 </div>
             </div>
             <div id="slide3" className="carousel-item relative w-full">
-                <img src={banner3} className="w-full rounded-2xl" />
+                <img src={banner3} className="w-full" />
                 <div className="absolute flex items-center h-full  gap-5 transform  left-0  top-0   rounded-2xl">
                     <div className='space-y-7 md:w-1/2 md:pl-12 pl-5 '>
                     <h2 className='text-xl lg:text-6xl font-bold text-teal-500'>Sporting Schools Basket Program  </h2>
