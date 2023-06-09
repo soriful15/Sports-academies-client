@@ -47,7 +47,7 @@ const MangeUsers = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: ` ${user.name} add admin`,
+                        title: ` ${user.name} add Instructor`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -93,7 +93,7 @@ const MangeUsers = () => {
                                            
 
                                             <div className='flex gap-2'>
-                                                <button onClick={() => handleInstructorBtn(user)} disabled={user.role === 'instructors' ? true : false} className="btn btn-primary">instructors</button>
+                                                <button onClick={() => handleInstructorBtn(user)} disabled={user.role === 'instructors' ? true : false} className="btn btn-primary">Make instructors</button>
                                                 <button onClick={() => handleAdminBtn(user)} className="btn btn-secondary" disabled={user.role === 'admin' ? true : false}> Make Admin</button>
                                             </div>
 

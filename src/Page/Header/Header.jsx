@@ -41,7 +41,8 @@ const Header = () => {
         <>
 
             
-            <div className="navbar  lg:px-28 py-5 fixed z-10  bg-opacity-30 bg-black lg:text-white">
+            {/* <div className="navbar  lg:px-28 py-5 fixed z-10  bg-opacity-30 bg-black lg:text-white"> */}
+            <div className="navbar  lg:px-28 py-5 bg-lime-100">
 
 
                 <div className="navbar">

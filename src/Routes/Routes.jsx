@@ -14,6 +14,8 @@ import AddClass from '../Page/Dashboard/AddClass/AddClass';
 import PrivateRoute from '../Routes/PrivateRoute'
 import MangeUsers from '../Page/Dashboard/MangeUsers/MangeUsers';
 import Classes from '../Page/Classess/classes';
+import InstructorsRoutes from './InstructorsRoutes';
+import AdminRoutes from './AdminRoutes';
 
 const router = createBrowserRouter([
   {
@@ -53,11 +55,11 @@ const router = createBrowserRouter([
     children:[
       {
         path:'addClasses',
-        element:<AddClass></AddClass>
+        element:<InstructorsRoutes><AddClass></AddClass></InstructorsRoutes>
       },
       {
         path:'mangeUsers',
-        element:<MangeUsers></MangeUsers>
+        element: <AdminRoutes><MangeUsers></MangeUsers></AdminRoutes>
       }
     ]
   },

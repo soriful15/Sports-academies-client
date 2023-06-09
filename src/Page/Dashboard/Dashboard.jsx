@@ -5,7 +5,7 @@ import adminUsers from '../hooks/adminUsers';
 import instructorsUsers from '../hooks/instructorsUsers';
 const Dashboard = () => {
     const [isAdmin] = adminUsers()
-    const [isInstructors] = instructorsUsers()
+    const [isInstructors] = instructorsUsers() 
     // const isAdmin = true;
     return (
         <>
@@ -31,24 +31,25 @@ const Dashboard = () => {
                             isAdmin ?
                                 (<>
 
-                                    <li><NavLink to='/'>Home</NavLink ></li>
                                     <li><NavLink to='/dashboard/mangeClasses'> Mange Classes</NavLink ></li>
                                     <li><NavLink to='/dashboard/mangeUsers'> Mange Users</NavLink ></li>
+                                    
 
-                                </>) : isInstructors ?
+                                </>) :isInstructors ?
                                     (<>
-                                        <li><NavLink to='/'>Home</NavLink ></li>
                                         <li><NavLink to='/dashboard/addClasses'> Add Classes</NavLink ></li>
                                         <li><NavLink to='/dashboard/myClasses'>MyClasses</NavLink ></li>
+                                     
 
                                     </>) : <>
-                                        <li><NavLink to='/'>Home</NavLink ></li>
                                         <li><NavLink to='/mySectionClass'>MySection Class</NavLink ></li>
                                         <li><NavLink to='/menu'> My Enroll Class</NavLink ></li>
                                         <li><NavLink to='/menu'> Payment History</NavLink ></li>
+                                       
 
                                     </>
                         }
+                         <li><NavLink to='/'>Home</NavLink ></li>
 
                     </ul>
 
