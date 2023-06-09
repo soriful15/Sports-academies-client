@@ -10,8 +10,10 @@ import Register from '../Page/Register/Register';
 import Dashboard from '../Page/Dashboard/Dashboard';
 import Instructors from '../Page/Instructors/Instructors';
 import AddClass from '../Page/Dashboard/AddClass/AddClass';
-import AllUsers from '../Page/Dashboard/AllUsers/AllUsers';
+
 import PrivateRoute from '../Routes/PrivateRoute'
+import MangeUsers from '../Page/Dashboard/MangeUsers/MangeUsers';
+import Classes from '../Page/Classess/classes';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:'/instructors',
         element:<Instructors></Instructors>
+      },
+      {
+        path:'/classes',
+        element: <Classes></Classes>
       }
 
     ]
@@ -50,8 +56,8 @@ const router = createBrowserRouter([
         element:<AddClass></AddClass>
       },
       {
-        path:'allUsers',
-        element:<AllUsers></AllUsers>
+        path:'mangeUsers',
+        element:<MangeUsers></MangeUsers>
       }
     ]
   },

@@ -3,7 +3,7 @@ import React from 'react';
 import { FaTrash, FaUsers } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
-const AllUsers = () => {
+const MangeUsers = () => {
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch(`http://localhost:4000/users`)
@@ -61,7 +61,15 @@ const AllUsers = () => {
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
                                         <td>
-                                            <button onClick={() => handleAdminBtn(user)} className="btn btn-ghost "> {user.role === 'admin' ? 'admin' : <FaUsers className='text-2xl'></FaUsers>}</button>
+     <button onClick={() => handleAdminBtn(user)} className="btn btn-ghost "> {user.role === 'admin' ? 'admin' : <FaUsers className='text-2xl'></FaUsers>}</button>
+
+     {/* <button onClick={() => handleAdminBtn(user)} className="btn btn-ghost "> 
+     {
+     user.role === 'admin',user.role === 'instructors', 'admin' : 'instructors': <FaUsers className='text-2xl'></FaUsers>
+    
+     }
+     </button> */}
+
                                         </td>
                                         <td><button onClick={() => handleDeleteBtn(user)} className="btn btn-ghost bg-red-500 text-white"><FaTrash></FaTrash></button></td>
                                     </tr>
@@ -82,4 +90,4 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+export default MangeUsers;
