@@ -2,6 +2,12 @@ import React from 'react';
 
 const ClassesCard = ({classes}) => {
     const {classesImg,instructor_name,classesName,seats,price}=classes
+
+
+
+
+
+    
     return (
         <>
            <div  className="card card-compact w-96 bg-base-100 shadow-xl">

@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FaShoppingCart, FaWallet, FaHome, FaCalendarAlt, FaBars, FaShoppingBag,  FaBook, FaUser } from 'react-icons/fa';
-// import adminUsers from '../hooks/adminUsers';
+// import { FaShoppingCart, FaWallet, FaHome, FaCalendarAlt, FaBars, FaShoppingBag,  FaBook, FaUser } from 'react-icons/fa';
+import adminUsers from '../hooks/adminUsers';
+import instructorsUsers from '../hooks/instructorsUsers';
 const Dashboard = () => {
-    // const [isAdmin] = adminUsers()
-    const isAdmin = true;
+    const [isAdmin] = adminUsers()
+    const [isInstructors] = instructorsUsers()
+    // const isAdmin = true;
     return (
         <>
             <div className="drawer lg:drawer-open">
@@ -19,43 +21,34 @@ const Dashboard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full  text-base-content">
                         {/* Sidebar content here */}
-                      
-                     
+
+
 
 
 
 
                         {
                             isAdmin ?
-                                <>
-                                    <li><NavLink to='/dashboard/userAdmin'><FaHome></FaHome>Admin Home</NavLink ></li>
-                                    <li><NavLink to='/dashboard/addClasses'> Add Classes</NavLink ></li>
-                                    <li><NavLink to='/dashboard/manageItems' ><FaWallet></FaWallet> Mange Item</NavLink ></li>
-                                    <li><NavLink to='/dashboard/history' ><FaBook></FaBook> Mange Booking</NavLink ></li>
-                                    <li><NavLink to='/dashboard/mangeUsers' ><FaUser></FaUser> Mange Users</NavLink ></li>
+                                (<>
 
-                                </> :
+                                    <li><NavLink to='/'>Home</NavLink ></li>
+                                    <li><NavLink to='/dashboard/mangeClasses'> Mange Classes</NavLink ></li>
+                                    <li><NavLink to='/dashboard/mangeUsers'> Mange Users</NavLink ></li>
 
+                                </>) : isInstructors ?
+                                    (<>
+                                        <li><NavLink to='/'>Home</NavLink ></li>
+                                        <li><NavLink to='/dashboard/addClasses'> Add Classes</NavLink ></li>
+                                        <li><NavLink to='/dashboard/myClasses'>MyClasses</NavLink ></li>
 
-                                <>
-                                    <li><NavLink to='/dashboard/userHome'><FaHome></FaHome> Home</NavLink ></li>
-                                    <li><NavLink to='/dashboard/reservations'><FaCalendarAlt></FaCalendarAlt> Reservations</NavLink ></li>
-                                    <li><NavLink to='/dashboard/history' ><FaWallet></FaWallet> Payment</NavLink ></li>
-                                    <li>
+                                    </>) : <>
+                                        <li><NavLink to='/'>Home</NavLink ></li>
+                                        <li><NavLink to='/mySectionClass'>MySection Class</NavLink ></li>
+                                        <li><NavLink to='/menu'> My Enroll Class</NavLink ></li>
+                                        <li><NavLink to='/menu'> Payment History</NavLink ></li>
 
-
-                                        <NavLink to='/dashboard/myCart'><FaShoppingCart></FaShoppingCart>My Cart
-                                        </NavLink >
-                                    </li>
-                                </>
+                                    </>
                         }
-
-
-                        <div className="divider"></div>
-                        <li><NavLink to='/'><FaHome></FaHome> Home</NavLink ></li>
-                        <li><NavLink to='/menu'><FaBars></FaBars> Our Menu</NavLink ></li>
-                        <li><NavLink to='/order/salad'><FaShoppingBag></FaShoppingBag> Order shop</NavLink ></li>
-
 
                     </ul>
 

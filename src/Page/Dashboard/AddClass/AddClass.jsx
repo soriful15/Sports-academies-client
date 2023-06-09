@@ -31,8 +31,8 @@ const AddClass = () => {
                     // console.log(imageResponse)
                     const imgUrl = imageResponse.data.display_url
                     // console.log(data, imgUrl)
-                    const { classesName, instructor_name, instructor_email, seats, price, details} = data
-                    const newClasses = { classesImg: imgUrl, classesName, instructor_name, instructor_email,seats, price, details}
+                    const { classesName, instructor_name, instructor_email, seats, price, details } = data
+                    const newClasses = { classesImg: imgUrl, classesName, instructor_name, instructor_email, seats, price, details }
                     // console.log(newItem)
                     axiosSecure.post('/classes', newClasses)
                         .then(data => {
@@ -56,9 +56,10 @@ const AddClass = () => {
 
     return (
         <>
+            <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
+            <div className="divider w-3/4 mx-auto bg-orange-200"></div>
 
-
-            <div className='container mx-auto'>
+            <div className='container mx-auto px-3'>
 
                 <h1 className='text-center mt-10 text-4xl text-sky-800 '>Add  Classes</h1>
 
@@ -146,7 +147,7 @@ const AddClass = () => {
                     </div>
                     <div className="form-control mt-6">
 
-                        <input className='btn btn-success btn-block' type="submit" value="Add Confirm" />
+                        <input className='btn btn-success btn-block' type="submit" value="Add Classes" />
                     </div>
 
                 </form>
