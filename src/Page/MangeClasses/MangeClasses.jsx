@@ -1,16 +1,91 @@
-import React from 'react';
+
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
+import Swal from 'sweetalert2';
+
+
+
 
 const MangeClasses = () => {
     const { user } = useAuth()
-
-    const { data: allClasses = [], } = useQuery(['classes'], async () => {
+    const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
         const res = await fetch(`http://localhost:4000/allClasses`)
         return res.json()
 
     })
     // console.log(allClasses)
+
+    const handleApprovedBtn = (id) => {
+        console.log(user)
+        fetch(`http://localhost:4000/updatedStatusApproved/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} add Approved`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    }
+    const handleDenyBtn = (id) => {
+        console.log(user)
+        fetch(`http://localhost:4000/updatedStatusDeny/${id}`, {
+            method: 'PUT',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} add Deny`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    }
+
+    // const handleFeedBackModal=()=>{
+
+    // }
+
+
+    // const handleFeedBackBtn = (id) => {
+    //     console.log(user)
+    //     fetch(`http://localhost:4000/updatedStatusFeedBack/${id}`, {
+    //         method: 'PATCH',
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.modifiedCount) {
+    //                 refetch();
+    //                 Swal.fire({
+    //                     position: 'top-end',
+    //                     icon: 'success',
+    //                     title: `${user.name} add FeedBack`,
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 })
+    //             }
+    //         })
+    // }
+
+
+
+
+
+
+
+
 
     return (
         <>
@@ -64,10 +139,11 @@ const MangeClasses = () => {
                                     <td>{allClass.price}</td>
                                     <td>{allClass.status}</td>
                                     <th className='gap-2 flex'>
-                                        <button className="btn btn-error btn-xs">approved</button>
-                                        {/* <button onClick={() => handleInstructorBtn(user)} disabled={user.status === 'approved' ? true : false} className="btn btn-success btn-xs">Approved</button> */}
-                                        <button className="btn btn-error btn-xs">Deny</button>
-                                        <button onClick={() => window.my_modal_5.showModal()} className="btn btn-warning btn-xs">FeedBack</button>
+
+                                        <button onClick={() => handleApprovedBtn(allClass._id)} disabled={allClass.status === 'approved' ? true : false} className="btn btn-success btn-xs">Approved</button>
+                                        <button className="btn btn-error btn-xs" onClick={() => handleDenyBtn(allClass._id)} disabled={allClass.status === 'deny' ? true : false}   >Deny</button>
+                                        {/* <button  onClick={() => handleFeedBackBtn(allClass._id)}  className="btn btn-warning btn-xs">FeedBack</button> */}
+                                        <button className="btn btn-warning btn-xs" onClick={() => window.my_modal_2.showModal()}>FeedBack</button>
                                     </th>
                                 </tr>
 
@@ -75,21 +151,19 @@ const MangeClasses = () => {
                         }
 
                     </tbody>
-
-
-
                 </table>
             </div>
 
 
-            {/* Open the modal using ID.showModal() method */}
-            <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+            {/* <button className="btn" onClick={()=>window.my_modal_2.showModal()}>open modal</button> */}
+            {/* <dialog id="my_modal_2"  className="modal"> */}
+            <dialog id={allClasses._id}  className="modal">
                 <form method="dialog" className="modal-box">
-                  <input type="comment" className='w-full h-full' />
-                    <div className="modal-action">
-                        {/* if there is a button in form, it will close the modal */}
-                        <button className="btn">Close</button>
-                    </div>
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">Press ESC key or click outside to close</p>
+                </form>
+                <form method="dialog" className="modal-backdrop">
+                    <button>close</button>
                 </form>
             </dialog>
 
