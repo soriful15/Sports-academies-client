@@ -5,8 +5,8 @@ import ClassesCard from './ClassesCard';
 
 const Classes = () => {
     const { data: allClasses = [], } = useQuery(['classes'], async () => {
-        const res = await fetch(`http://localhost:4000/classes`)
-        return res.json()
+        // const res = await fetch(`http://localhost:4000/classes`)
+        // return res.json()
 
     })
 

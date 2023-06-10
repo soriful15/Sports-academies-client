@@ -18,6 +18,7 @@ const AddClass = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         data.enroll = 0
+        // data.pending=pending
         console.log(data)
         const fromData = new FormData();
         fromData.append('image', data.classesImg[0])
@@ -30,11 +31,12 @@ const AddClass = () => {
                 if (imageResponse.success) {
                     // console.log(imageResponse)
                     const imgUrl = imageResponse.data.display_url
-                    // console.log(data, imgUrl)
-                    const { classesName, instructor_name, instructor_email, seats, price, details ,enroll} = data
-                    const newClasses = { classesImg: imgUrl, classesName, instructor_name, instructor_email, seats, price, details,enroll }
+                    // console.log(data, imgUrl) 
+                    const { classesName, instructor_name, instructor_email, seats, price, details ,enroll,status='pending'} = data
+                    const newClasses = { classesImg: imgUrl, classesName, instructor_name, instructor_email, seats, price, details,enroll,status}
                     // console.log(newItem)
-                    axiosSecure.post('/classes', newClasses)
+                    // axiosSecure.post('/classes', newClasses)
+                    axiosSecure.post('/allClasses', newClasses)
                         .then(data => {
                             console.log('after posting new newClasses item', data.data)
                             if (data.data.insertedId) {

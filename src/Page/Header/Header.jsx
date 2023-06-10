@@ -18,18 +18,21 @@ const Header = () => {
 
     const navBarOptions = <>
 
-        <li> <NavLink to='/' title='Home Link' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+        <li> <NavLink to='/' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Home
         </NavLink></li>
-        <li> <NavLink to='/instructors' title='Home Link' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+        <li> <NavLink to='/instructors' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Instructors
         </NavLink></li>
-        <li> <NavLink to='/classes' title='Home Link' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+        <li> <NavLink to='/classes' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Classes
+        </NavLink></li>
+        <li> <NavLink to='/login' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+            Login
         </NavLink></li>
         
         {
-            user && <li> <NavLink to='/dashboard' title='Home Link' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+            user && <li> <NavLink to='/dashboard' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Dashboard
         </NavLink></li>
         }

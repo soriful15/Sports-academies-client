@@ -90,7 +90,7 @@ const MangeUsers = () => {
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
                                         <td>
-                                           
+
 
                                             <div className='flex gap-2'>
                                                 <button onClick={() => handleInstructorBtn(user)} disabled={user.role === 'instructors' ? true : false} className="btn btn-primary">Make instructors</button>
