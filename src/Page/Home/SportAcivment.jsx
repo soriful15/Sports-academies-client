@@ -24,9 +24,9 @@ const SportAcivment = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper mt-10"
+        className="mySwiper mt-10 w-full"
       >
-        <SwiperSlide><img src={stu1} className='h-[400px] w-full' alt="" />
+        <SwiperSlide><img src={stu1} className='h-96 w-full' alt="" />
         <h3 className='text-center lg:text-2xl md:text-xl  text-blue-700 -mt-16'>Jack</h3>
         <p className='text-center -mt-2 text-lg text-black'> Medalist at saf Games Dais cup 2022 </p>
         </SwiperSlide>

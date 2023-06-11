@@ -42,7 +42,7 @@ const Dashboard = () => {
                                      
 
                                     </>) : <>
-                                        <li><NavLink to='/mySectionClass'>MySection Class</NavLink ></li>
+                                        <li><NavLink to='/mySelectedClass'>MySection Class</NavLink ></li>
                                         <li><NavLink to='/menu'> My Enroll Class</NavLink ></li>
                                         <li><NavLink to='/menu'> Payment History</NavLink ></li>
                                        

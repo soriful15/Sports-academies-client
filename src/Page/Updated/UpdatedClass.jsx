@@ -12,6 +12,7 @@ import { useLoaderData } from 'react-router-dom';
 const UpdatedClass = () => {
     const updatedData = useLoaderData()
     console.log(updatedData)
+
     const { user } = useAuth()
     const { _id, seats, price, details} = updatedData
 
@@ -24,7 +25,7 @@ const UpdatedClass = () => {
         headers: {
             'content-type': 'application/json'
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(updatedData)
     })
 
         .then(res => res.json())

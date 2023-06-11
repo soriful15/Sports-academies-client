@@ -1,15 +1,15 @@
 
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
-// import { useState } from 'react';
+import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 
 
 
 const MangeClasses = () => {
-    // const [showModal, setShowModal] = useState(false)
-    // const [feedBackText, setFeedBackText] = useState('')
+    const [showModal, setShowModal] = useState(false)
+    const [sendFeedBack, setSendFeedBack] = useState('')
     // const [selectItemId, setSelectItemId] = useState(null)
 
 
@@ -60,37 +60,48 @@ const MangeClasses = () => {
             })
     }
 
-    // const handleFeedBackModal = (id) => {
-    //     setSelectItemId(id)
-    //     setShowModal(true)
-    // }
+
+    const handleFeedBackButton = (id) => {
+        setSendFeedBack(id)
+        setShowModal(true)
+    }
+
+    const handleCloseModal = () => {
+        setShowModal(false)
+    }
+    const saveFeedBack = (e) => {
+        const value = e.target.value
+        setSendFeedBack(value)
+
+    }
 
 
-    // const handleFeedBackBtn = () => {
-    //     console.log(user)
-    //     fetch(`http://localhost:4000/updatedStatusFeedBack/${selectItemId}`, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ feedBack: feedBackText })
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.modifiedCount) {
-    //                 refetch();
-    //                 setShowModal(false)
-    //                 setFeedBackText('')
-    //                 Swal.fire({
-    //                     position: 'top-end',
-    //                     icon: 'success',
-    //                     title: `${user.displayName} add FeedBack`,
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 })
-    //             }
-    //         })
-    // }
+    const handleSendFeedBack = (id) => {
+        console.log(user)
+        fetch(`http://localhost:4000/updatedStatusFeedBack/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ feedBack: sendFeedBack })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount>0) {
+
+                    refetch();
+                    // setShowModal(false)
+                    // setSendFeedBack('')
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.displayName} add FeedBack`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    }
 
 
     return (
@@ -149,7 +160,35 @@ const MangeClasses = () => {
 
                                         <button onClick={() => handleApprovedBtn(allClass._id)} disabled={allClass.status === 'approved' ? true : false} className="btn btn-success btn-xs">Approved</button>
                                         <button className="btn btn-error btn-xs" onClick={() => handleDenyBtn(allClass._id)} disabled={allClass.status === 'deny' ? true : false}   >Deny</button>
-                                        {/* <button className="btn btn-warning btn-xs" onClick={() => handleFeedBackBtn(allClass._id)} >FeedBack</button> */}
+                                        <button className="btn btn-warning btn-xs" onClick={() => handleFeedBackButton(allClass._id)} >FeedBack</button>
+
+
+                                        {showModal && (
+                                            <dialog open className="modal">
+                                                <form method="dialog" className="modal-box">
+                                                    <input
+                                                        onBlur={saveFeedBack}
+                                                        type="text"
+                                                        placeholder="Type here"
+                                                        className="input w-full max-w-xs"
+                                                    />
+                                                    <div className="modal-action">
+                                                        <button className="btn" onClick={handleCloseModal}>
+                                                            Close
+                                                        </button>
+                                                        <button
+                                                            onClick={() => handleSendFeedBack(allClass._id)}
+                                                            disabled={!sendFeedBack}
+                                                        >
+                                                            Send FeedBack
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </dialog>
+                                        )}
+
+
+
                                     </th>
                                 </tr>
 
@@ -158,6 +197,10 @@ const MangeClasses = () => {
 
                     </tbody>
                 </table>
+
+
+
+
             </div>
 
 
@@ -167,7 +210,7 @@ const MangeClasses = () => {
 
 
 
-            
+
 
 
 
@@ -178,3 +221,29 @@ const MangeClasses = () => {
 };
 
 export default MangeClasses;
+
+
+
+// {showModal && (
+//     <dialog open className="modal">
+//       <form method="dialog" className="modal-box">
+//         <input
+//           onBlur={saveFeedBack}
+//           type="text"
+//           placeholder="Type here"
+//           className="input w-full max-w-xs"
+//         />
+//         <div className="modal-action">
+//           <button className="btn" onClick={handleCloseModal}>
+//             Close
+//           </button>
+//           <button
+//             onClick={() => handleSendFeedBack(_id)}
+//             disabled={!sendFeedBack}
+//           >
+//             Send FeedBack
+//           </button>
+//         </div>
+//       </form>
+//     </dialog>
+//   )}

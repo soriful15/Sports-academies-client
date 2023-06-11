@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/logo.jpg';
 import { AuthContext } from '../../Provider/AuthProvider';
-// import adminUsers from '../hooks/adminUsers';
-// import instructorsUsers from '../hooks/instructorsUsers';
+import adminUsers from '../hooks/adminUsers';
+import instructorsUsers from '../hooks/instructorsUsers';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
-    // const [isAdmin] = adminUsers()
-    // const [isInstructors] = instructorsUsers() 
+    const [isAdmin] = adminUsers()
+    const [isInstructors] = instructorsUsers() 
     const handleLogOut = () => {
         logOut()
             .then(result => {
@@ -33,7 +33,13 @@ const Header = () => {
        
         
         {
-            user && <li> <NavLink to='/dashboard' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+            user && <li> <NavLink to={
+                isAdmin
+                  ? "/dashboard/mangeUsers"
+                  :isInstructors
+                  ? "/dashboard/myClass"
+                  : "/dashboard/mySelectedClass"
+              } title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Dashboard
         </NavLink></li>
         }
@@ -87,11 +93,6 @@ const Header = () => {
                                         </div>
                                     </label>
                                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-black rounded-box w-52">
-                                        <li>
-                                            <a className="justify-between">
-                                                Profile
-                                            </a>
-                                        </li>
                                         <li><Link to='/login' className='font-bold' onClick={handleLogOut}>Logout</Link></li>
                                     </ul>
                                 </div>

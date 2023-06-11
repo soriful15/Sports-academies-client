@@ -65,9 +65,9 @@ const MyClass = () => {
                                     <td>{allClass.price}</td>
                                     <td>{allClass.seats}</td>
                                     <td>
-                                        FeedBack
+                                    {allClass.feedBack? allClass.feedBack :"Nothing FeedBack"}
                                     </td>
-                                    <td><Link to={`/dashboard/updated/${allClass._id}`} className="btn btn-info btn-xs">Updated</Link></td>
+                                <Link to={`/dashboard/allClasses/${allClass._id}`} className="btn btn-info btn-xs">Updated</Link>
                                
                                    
                                 </tr>

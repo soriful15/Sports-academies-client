@@ -22,20 +22,10 @@ const Banner = () => {
     return (
         <>
 
-            {/* <NavLink
-                    to={
-                      isAdmin
-                        ? "/dashboard/manageclasses"
-                        : isInstructor
-                        ? "/dashboard/myclasses"
-                        : "/dashboard/myselectedclass"
-                    }
-                    className={({ isActive }) =>
-                      isActive
-                        ? "text-purple-600"
-                        : "hover:text-purple-600 ease-in duration-200"
-                    } */}
-            <Carousel className='mt-6 '>
+        <div className="text-center w-11/12 mx-auto mt-5 mb-8">
+
+
+        <Carousel className='mt-6 '>
                 <div>
                     <img src={banner1} />
                     <div className="absolute flex items-center h-full  gap-5 transform  left-0  top-0   rounded-2xl  ">
@@ -74,6 +64,8 @@ const Banner = () => {
                 </div>
             
             </Carousel>
+
+        </div>
 
 
           

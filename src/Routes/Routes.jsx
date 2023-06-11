@@ -19,6 +19,7 @@ import AdminRoutes from './AdminRoutes';
 import MangeClasses from '../Page/MangeClasses/MangeClasses';
 import MyClass from '../Page/MyClass/MyClass';
 import UpdatedClass from '../Page/Updated/UpdatedClass';
+import MySelectClass from '../Page/Dashboard/MySelectClass/MySelectClass';
 
 
 const router = createBrowserRouter([
@@ -74,10 +75,15 @@ const router = createBrowserRouter([
         element: <InstructorsRoutes><MyClass></MyClass></InstructorsRoutes>
       },
       {
-        path: 'updated/:id',
-        element: <InstructorsRoutes><UpdatedClass></UpdatedClass></InstructorsRoutes>,
-        loader:({params})=>fetch(`http://localhost:4000/allClasses/${params.id}`)
+        path: 'allClasses/:id',
+        // element: <InstructorsRoutes><UpdatedClass></UpdatedClass></InstructorsRoutes>,
+        element: <UpdatedClass></UpdatedClass>,
+        loader:({ params })=>fetch(`http://localhost:4000/allClasses/${params.id}`)
       },
+      {
+        path:'mySelectedClass',
+      element:<MySelectClass></MySelectClass>
+      }
      
     ]
   },
