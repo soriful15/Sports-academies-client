@@ -1,12 +1,18 @@
 
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
+// import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 
 
 
 const MangeClasses = () => {
+    // const [showModal, setShowModal] = useState(false)
+    // const [feedBackText, setFeedBackText] = useState('')
+    // const [selectItemId, setSelectItemId] = useState(null)
+
+
     const { user } = useAuth()
     const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
         const res = await fetch(`http://localhost:4000/allClasses`)
@@ -46,7 +52,7 @@ const MangeClasses = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: `${user.name} add Deny`,
+                        title: `${user.displayName} add Deny`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -54,24 +60,31 @@ const MangeClasses = () => {
             })
     }
 
-    // const handleFeedBackModal=()=>{
-
+    // const handleFeedBackModal = (id) => {
+    //     setSelectItemId(id)
+    //     setShowModal(true)
     // }
 
 
-    // const handleFeedBackBtn = (id) => {
+    // const handleFeedBackBtn = () => {
     //     console.log(user)
-    //     fetch(`http://localhost:4000/updatedStatusFeedBack/${id}`, {
+    //     fetch(`http://localhost:4000/updatedStatusFeedBack/${selectItemId}`, {
     //         method: 'PATCH',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ feedBack: feedBackText })
     //     })
     //         .then(res => res.json())
     //         .then(data => {
     //             if (data.modifiedCount) {
     //                 refetch();
+    //                 setShowModal(false)
+    //                 setFeedBackText('')
     //                 Swal.fire({
     //                     position: 'top-end',
     //                     icon: 'success',
-    //                     title: `${user.name} add FeedBack`,
+    //                     title: `${user.displayName} add FeedBack`,
     //                     showConfirmButton: false,
     //                     timer: 1500
     //                 })
@@ -80,17 +93,11 @@ const MangeClasses = () => {
     // }
 
 
-
-
-
-
-
-
-
     return (
         <>
             <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
-            <div className="divider w-3/4 mx-auto bg-orange-200"></div>
+            <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
+
 
 
             <div className="overflow-x-auto w-full">
@@ -142,8 +149,7 @@ const MangeClasses = () => {
 
                                         <button onClick={() => handleApprovedBtn(allClass._id)} disabled={allClass.status === 'approved' ? true : false} className="btn btn-success btn-xs">Approved</button>
                                         <button className="btn btn-error btn-xs" onClick={() => handleDenyBtn(allClass._id)} disabled={allClass.status === 'deny' ? true : false}   >Deny</button>
-                                        {/* <button  onClick={() => handleFeedBackBtn(allClass._id)}  className="btn btn-warning btn-xs">FeedBack</button> */}
-                                        <button className="btn btn-warning btn-xs" onClick={() => window.my_modal_2.showModal()}>FeedBack</button>
+                                        {/* <button className="btn btn-warning btn-xs" onClick={() => handleFeedBackBtn(allClass._id)} >FeedBack</button> */}
                                     </th>
                                 </tr>
 
@@ -155,17 +161,16 @@ const MangeClasses = () => {
             </div>
 
 
-            {/* <button className="btn" onClick={()=>window.my_modal_2.showModal()}>open modal</button> */}
-            {/* <dialog id="my_modal_2"  className="modal"> */}
-            <dialog id={allClasses._id}  className="modal">
-                <form method="dialog" className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Press ESC key or click outside to close</p>
-                </form>
-                <form method="dialog" className="modal-backdrop">
-                    <button>close</button>
-                </form>
-            </dialog>
+
+
+
+
+
+
+            
+
+
+
 
 
         </>

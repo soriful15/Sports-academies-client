@@ -11,7 +11,7 @@ const Instructors = () => {
     return (
       <>
       <h1 className='text-5xl text-center font-bold text-zinc-600 mt-9'>Sport Academic: InsTructor</h1>
-      
+    
       <div className='grid lg:grid-cols-3 md:grid-cols-2 container mx-auto mt-10 gap-10'>
             {
                 instructorClasses.map((user) => <div key={user._id} className="card w-full bg-cyan-100 shadow-xl">

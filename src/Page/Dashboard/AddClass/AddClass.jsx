@@ -44,7 +44,7 @@ const AddClass = () => {
                                 Swal.fire({
                                     position: 'top-end',
                                     icon: 'success',
-                                    title: ' Item Add has been Succeed',
+                                    title: ' Class Add has been Succeed',
                                     showConfirmButton: false,
                                     timer: 1500
                                 })
@@ -59,7 +59,7 @@ const AddClass = () => {
     return (
         <>
             <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
-            <div className="divider w-3/4 mx-auto bg-orange-200"></div>
+            <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 
             <div className='container mx-auto px-3'>
 
@@ -129,23 +129,6 @@ const AddClass = () => {
 
                             <input type="text" placeholder="Details" className="input input-bordered"  {...register("details")} />
                         </div>
-
-                        {/* <div className='form-control'>
-                            <label className="label">
-                                <span className="label-text">Status</span>
-                            </label>
-                            <select {...register("status")} className="input input-bordered">
-                                <option value="pending">Pending</option>
-                                <option value="approved">Approved</option>
-                                <option value="denied ">Denied </option>
-                            </select>
-
-                        </div> */}
-
-
-
-
-
                     </div>
                     <div className="form-control mt-6">
 

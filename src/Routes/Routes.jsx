@@ -17,6 +17,9 @@ import Classes from '../Page/Classess/classes';
 import InstructorsRoutes from './InstructorsRoutes';
 import AdminRoutes from './AdminRoutes';
 import MangeClasses from '../Page/MangeClasses/MangeClasses';
+import MyClass from '../Page/MyClass/MyClass';
+import UpdatedClass from '../Page/Updated/UpdatedClass';
+
 
 const router = createBrowserRouter([
   {
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
       {
         path:'/classes',
         element: <Classes></Classes>
-      }
+      },
 
     ]
 
@@ -65,7 +68,17 @@ const router = createBrowserRouter([
       {
         path:'mangeClasses',
         element: <AdminRoutes><MangeClasses></MangeClasses></AdminRoutes>
-      }
+      },
+      {
+        path:'myClass',
+        element: <InstructorsRoutes><MyClass></MyClass></InstructorsRoutes>
+      },
+      {
+        path: 'updated/:id',
+        element: <InstructorsRoutes><UpdatedClass></UpdatedClass></InstructorsRoutes>,
+        loader:({params})=>fetch(`http://localhost:4000/allClasses/${params.id}`)
+      },
+     
     ]
   },
 

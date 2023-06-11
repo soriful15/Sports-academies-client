@@ -38,7 +38,7 @@ const Dashboard = () => {
                                 </>) :isInstructors ?
                                     (<>
                                         <li><NavLink to='/dashboard/addClasses'> Add Classes</NavLink ></li>
-                                        <li><NavLink to='/dashboard/myClasses'>MyClasses</NavLink ></li>
+                                        <li><NavLink to='/dashboard/myClass'>MyClasses</NavLink ></li>
                                      
 
                                     </>) : <>

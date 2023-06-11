@@ -2,10 +2,13 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/logo.jpg';
 import { AuthContext } from '../../Provider/AuthProvider';
+// import adminUsers from '../hooks/adminUsers';
+// import instructorsUsers from '../hooks/instructorsUsers';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
-
+    // const [isAdmin] = adminUsers()
+    // const [isInstructors] = instructorsUsers() 
     const handleLogOut = () => {
         logOut()
             .then(result => {
@@ -27,15 +30,21 @@ const Header = () => {
         <li> <NavLink to='/classes' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Classes
         </NavLink></li>
-        <li> <NavLink to='/login' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
-            Login
-        </NavLink></li>
+       
         
         {
             user && <li> <NavLink to='/dashboard' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Dashboard
         </NavLink></li>
         }
+
+
+
+       
+
+
+
+
 
 
     </>
@@ -67,7 +76,7 @@ const Header = () => {
                         </ul>
                     </div>
                     {
-                        user && <>
+                        user ? <>
 
                             <div className="navbar-end ">
                                 <div className="dropdown dropdown-end">
@@ -88,7 +97,9 @@ const Header = () => {
                                 </div>
                             </div>
 
-                        </>
+                        </> : <> <li className='btn btn-accent text-black'> <NavLink  to='/login' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+                                Login
+                            </NavLink></li></>
                     }
                 </div>
 

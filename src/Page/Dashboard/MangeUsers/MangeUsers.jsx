@@ -60,7 +60,7 @@ const MangeUsers = () => {
     return (
         <>
             <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
-            <div className="divider w-3/4 mx-auto bg-orange-200"></div>
+            <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 
             <div className='w-3/4 mt-10'>
 
