@@ -1,42 +1,40 @@
 import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import useCart from '../../hooks/useCart';
-import { FaTrash, FaAmazonPay } from "react-icons/fa";
+import { FaTrash, FaCcStripe } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 const MySelectClass = () => {
     const { user } = useAuth()
-    const [cart,refetch] = useCart()
-    // const total = cart.reduce((sum, item) => parseInt(item.price )+ sum, 0)
-
-
-const handleDeleteBtn=(item)=>{
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            fetch(`http://localhost:4000/carts/${item._id}`, {
-                method: 'DELETE'
-            })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.deletedCount > 0) {
-                        refetch();
-                        Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                        )
-                    }
+    const [cart, refetch] = useCart()
+    const handleDeleteBtn = (item) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:4000/carts/${item._id}`, {
+                    method: 'DELETE'
                 })
-        }
-    })
-}
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
 
 
     return (
@@ -92,8 +90,7 @@ const handleDeleteBtn=(item)=>{
                                     <td>{item.seats}</td>
                                     <td>{item.price}</td>
                                     <th>
-
-                                        <button className="btn btn-success btn-xs text-base text-black"><FaAmazonPay></FaAmazonPay> Pay</button>
+                                        <Link to={`/dashboard/payments/${item._id}`}><button className="btn btn-success btn-xs text-base text-blue-700"><FaCcStripe></FaCcStripe> Pay</button></Link>
 
                                     </th>
                                     <th >
@@ -113,7 +110,7 @@ const handleDeleteBtn=(item)=>{
 
 
 
-            </div>
+            </div >
 
 
         </>

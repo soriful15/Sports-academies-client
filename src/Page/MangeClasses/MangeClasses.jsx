@@ -1,16 +1,13 @@
 
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
 import Swal from 'sweetalert2';
 
 
 
 
 const MangeClasses = () => {
-    const [showModal, setShowModal] = useState(false)
-    const [sendFeedBack, setSendFeedBack] = useState('')
-    // const [selectItemId, setSelectItemId] = useState(null)
+ 
 
 
     const { user } = useAuth()
@@ -33,7 +30,7 @@ const MangeClasses = () => {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: `${user.name} add Approved`,
+                        title: `${user.displayName} add Approved`,
                         showConfirmButton: false,
                         timer: 1500
                     })
@@ -61,47 +58,40 @@ const MangeClasses = () => {
     }
 
 
-    const handleFeedBackButton = (id) => {
-        setSendFeedBack(id)
-        setShowModal(true)
-    }
+   
 
-    const handleCloseModal = () => {
-        setShowModal(false)
-    }
-    const saveFeedBack = (e) => {
-        const value = e.target.value
-        setSendFeedBack(value)
+    const handleFedback = (event) => {
+        event.preventDefault()
+        const form = event.target;
+        const feedBack = form.feedBack.value;
+        const id = form.id.value;
 
-    }
-
-
-    const handleSendFeedBack = (id) => {
-        console.log(user)
+        const classFeedback = { feedBack, id }
+        console.log(classFeedback);
         fetch(`http://localhost:4000/updatedStatusFeedBack/${id}`, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ feedBack: sendFeedBack })
+            body: JSON.stringify(classFeedback)
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount>0) {
-
-                    refetch();
-                    // setShowModal(false)
-                    // setSendFeedBack('')
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: `${user.displayName} add FeedBack`,
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.modifiedCount > 0) {
+                    form.reset();
+                    Swal.fire("Send!", "Feedback has been send.", "success");
                 }
-            })
+            });
     }
+
+
+
+
+
+
+
+
+
 
 
     return (
@@ -160,33 +150,51 @@ const MangeClasses = () => {
 
                                         <button onClick={() => handleApprovedBtn(allClass._id)} disabled={allClass.status === 'approved' ? true : false} className="btn btn-success btn-xs">Approved</button>
                                         <button className="btn btn-error btn-xs" onClick={() => handleDenyBtn(allClass._id)} disabled={allClass.status === 'deny' ? true : false}   >Deny</button>
-                                        <button className="btn btn-warning btn-xs" onClick={() => handleFeedBackButton(allClass._id)} >FeedBack</button>
 
-
-                                        {showModal && (
-                                            <dialog open className="modal">
-                                                <form method="dialog" className="modal-box">
-                                                    <input
-                                                        onBlur={saveFeedBack}
-                                                        type="text"
-                                                        placeholder="Type here"
-                                                        className="input w-full max-w-xs"
-                                                    />
-                                                    <div className="modal-action">
-                                                        <button className="btn" onClick={handleCloseModal}>
-                                                            Close
-                                                        </button>
-                                                        <button
-                                                            onClick={() => handleSendFeedBack(allClass._id)}
-                                                            disabled={!sendFeedBack}
-                                                        >
-                                                            Send FeedBack
-                                                        </button>
+                                        <label htmlFor={allClass._id} className="btn btn-sm modal-button">
+                                            Feedback
+                                        </label>
+                                        <input type="checkbox" id={allClass._id} className="modal-toggle" />
+                                        <label htmlFor={allClass._id} className="modal cursor-pointer">
+                                            <label className="modal-box relative" htmlFor="">
+                                                <form onSubmit={handleFedback}>
+                                                    <div className="pt-5">
+                                                        <label className="text-black" htmlFor="text">
+                                                            Send Feedback
+                                                        </label>
+                                                        <input type="text" name="id" className="hidden" defaultValue={allClass._id} />
+                                                        <textarea
+                                                            type='text'
+                                                            className=" w-full text-black p-2 lg:p-3 rounded-md focus:outline-none my-2 border border-orange-500"
+                                                            name="feedBack"
+                                                        />
                                                     </div>
+                                                    <button
+                                                        type="submit"
+                                                        className="group my-6 relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                                                    >
+                                                        Send Feedback
+                                                    </button>
                                                 </form>
-                                            </dialog>
-                                        )}
+                                            </label>
+                                        </label>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                      
 
 
                                     </th>

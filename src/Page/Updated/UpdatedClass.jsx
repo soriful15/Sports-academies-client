@@ -6,40 +6,37 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router-dom';
 
-
-
-
 const UpdatedClass = () => {
     const updatedData = useLoaderData()
     console.log(updatedData)
 
     const { user } = useAuth()
-    const { _id, seats, price, details} = updatedData
+    const { _id, seats, price, details } = updatedData
 
 
-    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
         fetch(`http://localhost:4000/allClasses/${_id}`, {
-        method: 'PUT',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(updatedData)
-    })
-
-        .then(res => res.json())
-        .then(result => {
-            console.log(result)
-            if (result.modifiedCount > 0) {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Updated  Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                })
-            }
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedData)
         })
+
+            .then(res => res.json())
+            .then(result => {
+                console.log(result)
+                if (result.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Updated  Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
 
 
 
@@ -49,7 +46,7 @@ const UpdatedClass = () => {
 
     return (
         <>
-              <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To Updated Class</h1>
+            <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To Updated Class</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 
             <div className='container mx-auto max-w-6xl px-3'>

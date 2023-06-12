@@ -20,6 +20,7 @@ import MangeClasses from '../Page/MangeClasses/MangeClasses';
 import MyClass from '../Page/MyClass/MyClass';
 import UpdatedClass from '../Page/Updated/UpdatedClass';
 import MySelectClass from '../Page/Dashboard/MySelectClass/MySelectClass';
+import Payments from '../Page/Dashboard/Payment/Payments';
 
 
 const router = createBrowserRouter([
@@ -42,11 +43,11 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
-        path:'/instructors',
-        element:<Instructors></Instructors>
+        path: '/instructors',
+        element: <Instructors></Instructors>
       },
       {
-        path:'/classes',
+        path: '/classes',
         element: <Classes></Classes>
       },
 
@@ -57,34 +58,39 @@ const router = createBrowserRouter([
   {
     path: 'dashboard',
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-    children:[
+    children: [
       {
-        path:'addClasses',
-        element:<InstructorsRoutes><AddClass></AddClass></InstructorsRoutes>
+        path: 'addClasses',
+        element: <InstructorsRoutes><AddClass></AddClass></InstructorsRoutes>
       },
       {
-        path:'mangeUsers',
+        path: 'mangeUsers',
         element: <AdminRoutes><MangeUsers></MangeUsers></AdminRoutes>
       },
       {
-        path:'mangeClasses',
+        path: 'mangeClasses',
         element: <AdminRoutes><MangeClasses></MangeClasses></AdminRoutes>
       },
       {
-        path:'myClass',
+        path: 'myClass',
         element: <InstructorsRoutes><MyClass></MyClass></InstructorsRoutes>
       },
       {
         path: 'allClasses/:id',
         // element: <InstructorsRoutes><UpdatedClass></UpdatedClass></InstructorsRoutes>,
         element: <UpdatedClass></UpdatedClass>,
-        loader:({ params })=>fetch(`http://localhost:4000/allClasses/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:4000/allClasses/${params.id}`)
       },
       {
-        path:'mySelectedClass',
-      element:<MySelectClass></MySelectClass>
-      }
-     
+        path: 'mySelectedClass',
+        element: <MySelectClass></MySelectClass>
+      },
+      {
+        path: 'Payments/:id',
+        element:<Payments></Payments>,
+        loader:({params})=>fetch(`http://localhost:4000/carts/${params.id}`)
+      },
+
     ]
   },
 
