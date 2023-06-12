@@ -13,6 +13,11 @@ const Register = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         // console.log(data)  
+
+// if(data.password !== data.confirmPassword){
+//     return
+// }
+
         createUser(data.email, data.password)
             .then(result => {
                 const createdUser = result.user

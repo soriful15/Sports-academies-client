@@ -40,8 +40,9 @@ const SocialLogin = () => {
 
     return (
         <>
+         <div className="divider">OR</div>
             <div className='text-center'>
-                <button className="btn btn-outline mb-3  btn-circle" onClick={handleGoogleSing}> <FaGoogle className=''></FaGoogle></button>
+                <button className="btn  mb-3  btn-info" onClick={handleGoogleSing}> <FaGoogle className=''></FaGoogle></button>
             </div>
         </>
     );
