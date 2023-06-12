@@ -16,13 +16,13 @@ const CheckOutFrom = ({ paymentData, price }) => {
     const [classes, setClasses] = useState([])
 
 
-useEffect(()=>{
-    fetch(`http://localhost:4000/approvedClasses`)
-    .then(res=>res.json())
-    .then(data=>{
-        setClasses(data)
-    })
-},[])
+    useEffect(() => {
+        fetch(`http://localhost:4000/approvedClasses`)
+            .then(res => res.json())
+            .then(data => {
+                setClasses(data)
+            })
+    }, [])
 
 
     useEffect(() => {
@@ -85,8 +85,8 @@ useEffect(()=>{
 
         console.log(paymentIntent)
         if (paymentIntent.status === 'succeeded') {
-        setTransactionId(paymentIntent.id)
-const { classesImg,  classesName, seats, price, selectedItemId, instructor_name, _id } = paymentData
+            setTransactionId(paymentIntent.id)
+            const { classesImg, classesName, seats, price, selectedItemId, instructor_name, _id } = paymentData
             const updatedSeat = classes.map((cls) => {
 
                 if (cls._id === paymentData.selectedItemId) {
@@ -95,8 +95,9 @@ const { classesImg,  classesName, seats, price, selectedItemId, instructor_name,
                         headers: {
                             'content-type': 'application/json'
                         },
-                        body: JSON.stringify({ 
-                            seats: cls.seats - 1, enroll: cls.enroll + 1 })
+                        body: JSON.stringify({
+                            seats: cls.seats - 1, enroll: cls.enroll + 1
+                        })
                     })
                         .then(res => res.json())
                         .then(updatedClass => {
@@ -108,7 +109,7 @@ const { classesImg,  classesName, seats, price, selectedItemId, instructor_name,
 
             const payment = {
                 classesImg,
-                name:user.displayName,
+                name: user.displayName,
                 classesName,
                 instructor_name,
                 seats,
@@ -117,22 +118,22 @@ const { classesImg,  classesName, seats, price, selectedItemId, instructor_name,
                 price,
                 selectedItemId,
                 // date: new Date(),
-                selectedId:_id
+                selectedId: _id
             }
             axiosSecure.post('/payments', payment)
-            .then(res => {
-                console.log(res.data)
-                if (res.data.insertResult.insertedId) {
-                    // display confirm
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Your work has been saved',
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-            })
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.insertResult.insertedId) {
+                        // display confirm
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
 
         }
 
@@ -143,9 +144,9 @@ const { classesImg,  classesName, seats, price, selectedItemId, instructor_name,
 
     return (
         <>
-  
 
-           <form className='w-2/3 mt-4' onSubmit={handleSubmit}>
+
+            <form className='w-2/3 mt-4' onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -162,17 +163,17 @@ const { classesImg,  classesName, seats, price, selectedItemId, instructor_name,
                         },
                     }}
                 />
-            
+
                 <button className='btn btn-success mt-4 w-48' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
-               
+
             </form>
             {cardError && <p className='text-red-700 text-center'>{cardError}</p>}
             {transactionId && <p className='text-green-600 mt-4 text-center'> transactionId complete:{transactionId}</p>}
 
 
-          
+
         </>
     );
 };

@@ -74,10 +74,10 @@ const ClassesCard = ({ classes }) => {
   return (
     <>
       <div className={`card card-compact w-full bg-base-100  ${seats === 0 ? 'bg-red-500' : 'shadow-xl'}`}>
-        <figure><img src={classesImg} className='h-96 w-full' alt="Shoes" /></figure>
+        <figure><img src={classesImg} className='h-72 w-full' alt="Shoes" /></figure>
         <div className="card-body">
           <h2 className="card-title text-black">Sports Name: {classesName}</h2>
-          <p className='font-semibold text-blue-800 text-xl'>Instructor Name: {instructor_name}</p>
+          <p className='font-semibold text-blue-800 text-lg'>Instructor Name: {instructor_name}</p>
           <p className='text-lg text-emerald-700'>Available seats: <span className={seats === 0 ? "text-red-400" : ''}>{parseInt(seats)}</span></p>
           <p className='text-base text-purple-700'>Price:${parseInt(price)}</p>
           <div className="card-actions">

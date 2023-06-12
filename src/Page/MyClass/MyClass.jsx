@@ -2,16 +2,26 @@ import React from 'react';
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../hooks/useAxioSecure';
 
 const MyClass = () => {
     const { user } = useAuth()
 
+    // const { data: allClasses = [] } = useQuery(['allClasses'], async () => {
+    //     const res = await fetch(`http://localhost:4000/allClasses`)
+    //     return res.json()
+    // })
+
+    const [axiosSecure] = useAxiosSecure();
     const { data: allClasses = [] } = useQuery(['allClasses'], async () => {
-        const res = await fetch(`http://localhost:4000/allClasses`)
-        return res.json()
-      
+
+        const res = await axiosSecure.get(`/allClasses`)
+        // return res.json()
+        return res.data
 
     })
+
+
 
     console.log(allClasses)
     return (
@@ -65,11 +75,11 @@ const MyClass = () => {
                                     <td>{allClass.price}</td>
                                     <td>{allClass.seats}</td>
                                     <td>
-                                    {allClass.feedBack? allClass.feedBack :"Nothing FeedBack"}
+                                        {allClass.feedBack ? allClass.feedBack : "Nothing FeedBack"}
                                     </td>
-                                <Link to={`/dashboard/allClasses/${allClass._id}`} className="btn btn-info btn-xs">Updated</Link>
-                               
-                                   
+                                    <Link to={`/dashboard/allClasses/${allClass._id}`} className="btn btn-info btn-xs">Updated</Link>
+
+
                                 </tr>
 
                             )

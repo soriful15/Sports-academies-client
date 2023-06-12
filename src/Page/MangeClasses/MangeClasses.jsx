@@ -2,21 +2,28 @@
 import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../hooks/useAxioSecure';
 
 
 
 
 const MangeClasses = () => {
- 
-
-
+    // const { user } = useAuth()
+    // const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
+    //     const res = await fetch(`http://localhost:4000/allClasses`)
+    //     return res.json()
+    // })
+    // console.log(allClasses)
     const { user } = useAuth()
-    const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
-        const res = await fetch(`http://localhost:4000/allClasses`)
-        return res.json()
+    const [axiosSecure] = useAxiosSecure();
+    const { data: allClasses = [],refetch} = useQuery(['allClasses'], async () => {
+        
+        const res = await axiosSecure.get(`/allClasses`)
+        // return res.json()
+        return res.data
 
     })
-    // console.log(allClasses)
+
 
     const handleApprovedBtn = (id) => {
         console.log(user)

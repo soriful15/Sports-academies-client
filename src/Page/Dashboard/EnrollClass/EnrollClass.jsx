@@ -6,9 +6,9 @@ import { useQuery } from '@tanstack/react-query';
 const EnrollClass = () => {
     const {user}=useAuth()
     const [axiosSecure] = useAxiosSecure();
-    const { data: payments = []} = useQuery(['payments'], async () => {
+    const { data: payments = []} = useQuery(['enrollPayments'], async () => {
         
-        const res = await axiosSecure.get(`/payments?email=${user?.email}`)
+        const res = await axiosSecure.get(`/enrollPayments?email=${user?.email}`)
         // return res.json()
         return res.data
 

@@ -13,7 +13,6 @@ import AddClass from '../Page/Dashboard/AddClass/AddClass';
 
 import PrivateRoute from '../Routes/PrivateRoute'
 import MangeUsers from '../Page/Dashboard/MangeUsers/MangeUsers';
-import Classes from '../Page/Classess/classes';
 import InstructorsRoutes from './InstructorsRoutes';
 import AdminRoutes from './AdminRoutes';
 import MangeClasses from '../Page/MangeClasses/MangeClasses';
@@ -23,6 +22,7 @@ import MySelectClass from '../Page/Dashboard/MySelectClass/MySelectClass';
 import Payments from '../Page/Dashboard/Payment/Payments';
 import EnrollClass from '../Page/Dashboard/EnrollClass/EnrollClass';
 import PaymentHistory from '../Page/Dashboard/PaymentHistory/PaymentHistory';
+import Classes from '../Page/Classess/Classes';
 
 
 const router = createBrowserRouter([
