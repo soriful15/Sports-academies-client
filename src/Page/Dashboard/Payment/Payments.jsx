@@ -11,7 +11,7 @@ const Payments = () => {
   const { user } = useAuth()
   const paymentData = useLoaderData()
   console.log(paymentData)
-  const price = parseInt((paymentData.price))
+  const price = parseInt(paymentData.price)
 
 
   return (

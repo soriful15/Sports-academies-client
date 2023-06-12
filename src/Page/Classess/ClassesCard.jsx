@@ -17,17 +17,6 @@ const ClassesCard = ({ classes }) => {
 
 
   const handleAddSelect = (classes) => {
-
-    // if(!user){
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'oops....',
-    //     text: 'please log in before slecting the course',
-
-    //   })
-    // return
-    // }
-
     if (isAdmin || isInstructors) {
       alert('Admin/instructor cannot selecting the course')
       return
@@ -92,7 +81,7 @@ const ClassesCard = ({ classes }) => {
           <p className='text-lg text-emerald-700'>Available seats: <span className={seats === 0 ? "text-red-400" : ''}>{parseInt(seats)}</span></p>
           <p className='text-base text-purple-700'>Price:${parseInt(price)}</p>
           <div className="card-actions">
-            <button onClick={() => handleAddSelect(classes)} disabled={seats === 0 || isAdmin || isInstructors} className={`btn btn-outline w-full ${seats === 0 || isAdmin || isInstructors ? "disabled" : ""}`}>Add to Select</button>
+            <button onClick={() => handleAddSelect(classes)} disabled={seats === 0 || isAdmin || isInstructors} className={`btn btn-primary w-full ${seats === 0 || isAdmin || isInstructors ? "disabled" : ""}`}>Add to Select</button>
           </div>
         </div>
       </div>

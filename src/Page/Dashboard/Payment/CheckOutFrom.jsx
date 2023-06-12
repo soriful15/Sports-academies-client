@@ -14,6 +14,17 @@ const CheckOutFrom = ({ paymentData, price }) => {
     const [processing, setProcessing] = useState(false)
     const [transactionId, setTransactionId] = useState('')
     const [classes, setClasses] = useState([])
+
+
+useEffect(()=>{
+    fetch(`http://localhost:4000/approvedClasses`)
+    .then(res=>res.json())
+    .then(data=>{
+        setClasses(data)
+    })
+},[])
+
+
     useEffect(() => {
         if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
@@ -74,8 +85,8 @@ const CheckOutFrom = ({ paymentData, price }) => {
 
         console.log(paymentIntent)
         if (paymentIntent.status === 'succeeded') {
-            setTransactionId(paymentIntent.id)
-            const { classesImg,  classesName, seats, price, selectedItemId,  _id } = paymentData
+        setTransactionId(paymentIntent.id)
+const { classesImg,  classesName, seats, price, selectedItemId, instructor_name, _id } = paymentData
             const updatedSeat = classes.map((cls) => {
 
                 if (cls._id === paymentData.selectedItemId) {
@@ -84,7 +95,8 @@ const CheckOutFrom = ({ paymentData, price }) => {
                         headers: {
                             'content-type': 'application/json'
                         },
-                        body: JSON.stringify({ availableSeats: cls.availableSeats - 1, enroll: cls.enroll + 1 })
+                        body: JSON.stringify({ 
+                            seats: cls.seats - 1, enroll: cls.enroll + 1 })
                     })
                         .then(res => res.json())
                         .then(updatedClass => {
@@ -97,12 +109,14 @@ const CheckOutFrom = ({ paymentData, price }) => {
             const payment = {
                 classesImg,
                 name:user.displayName,
-                classesName,seats,
+                classesName,
+                instructor_name,
+                seats,
                 email: user?.email,
                 transactionId: paymentIntent.id,
                 price,
                 selectedItemId,
-                date: new Date(),
+                // date: new Date(),
                 selectedId:_id
             }
             axiosSecure.post('/payments', payment)

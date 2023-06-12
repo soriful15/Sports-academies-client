@@ -32,7 +32,7 @@ const AddClass = () => {
                     // console.log(imageResponse)
                     const imgUrl = imageResponse.data.display_url
                     // console.log(data, imgUrl) 
-                    const { classesName, instructor_name, instructor_email, seats, price, details ,enroll,status='pending'} = data
+                    const { classesName, instructor_name, instructor_email, seats, price , details ,enroll,status='pending'} = data
                     const newClasses = { classesImg: imgUrl, classesName, instructor_name, instructor_email, seats, price, details,enroll,status}
                     // console.log(newItem)
                     // axiosSecure.post('/classes', newClasses)

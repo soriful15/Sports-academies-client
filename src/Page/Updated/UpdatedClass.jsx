@@ -22,9 +22,8 @@ const UpdatedClass = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updatedData)
+            body: JSON.stringify(data)
         })
-
             .then(res => res.json())
             .then(result => {
                 console.log(result)
