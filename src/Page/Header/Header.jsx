@@ -4,6 +4,7 @@ import logo from '../../assets/logo/logo.jpg';
 import { AuthContext } from '../../Provider/AuthProvider';
 import adminUsers from '../hooks/adminUsers';
 import instructorsUsers from '../hooks/instructorsUsers';
+import { Fade } from 'react-awesome-reveal';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
@@ -24,7 +25,10 @@ const Header = () => {
 
     const navBarOptions = <>
 
-        <li> <NavLink to='/' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+      <Fade>
+
+
+      <li> <NavLink to='/' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Home
         </NavLink></li>
         <li> <NavLink to='/instructors' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
@@ -48,6 +52,8 @@ const Header = () => {
         }
 
 
+
+      </Fade>
 
 
 
