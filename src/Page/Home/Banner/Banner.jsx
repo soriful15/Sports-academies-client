@@ -22,13 +22,13 @@ const Banner = () => {
     return (
         <>
 
-        <div className="text-center w-11/12 mx-auto mt-5 mb-8">
+        <div className="text-center lg:w-11/12 mx-auto mt-5 mb-8">
 
 
         <Carousel className='mt-6 '>
                 <div>
                     <img src={banner1} />
-                    <div className="absolute flex items-center h-full  gap-5 transform  left-0  top-0   rounded-2xl  ">
+                    <div className="absolute flex items-center h-full  gap-5   left-0  top-0   rounded-2xl  ">
                         <div className='space-y-2   w-full'>
                             <h2 className='text-xl lg:text-5xl font-medium text-blue-500'>Sporting Schools Cricket Program  </h2>
                             <h2 className='text-base lg:text-4xl font-medium text-violet-500'> Expand Your Horizons</h2>
@@ -45,7 +45,7 @@ const Banner = () => {
                         <div className='space-y-2 w-full'>
                             <h2 className='text-xl lg:text-5xl font-medium text-blue-500'>Sporting Schools FootBall Program  </h2>
                             <h2 className='text-base lg:text-4xl font-medium text-violet-500'>Build Team Spirit</h2>
-                            <p className='lg:text-2xl font-normal text-white w-3/4 mx-auto'>The Sporting Schools Basketball Program is a national initiative in Australia that aims to introduce and develop basketball skills among school students. It provides an inclusive and fun environment for children to learn and engage in basketball activities.</p>
+                            <p className='lg:text-2xl font-normal text-white w-3/4 mx-auto'>The Sporting Schools Basketball Program is a national initiative in Australia that aims to introduce and develop basketball skills among school students. .</p>
                         </div>
                     </div>
                 </div>

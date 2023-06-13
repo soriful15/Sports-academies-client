@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react'
 import registerFrom from '../../assets/83521-register-anumator.json'
@@ -9,18 +9,19 @@ import SocialLogin from '../../SocailLogin/SocialLogin';
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
-
+    const [error, setError] = useState('')
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         // console.log(data)  
 
-// if(data.password !== data.confirmPassword){
-//     return
-// }
+        if (data.password !== data.confirmPassword) {
+            return setError('Password is not Confirm')
+        }
 
         createUser(data.email, data.password)
             .then(result => {
                 const createdUser = result.user
+
                 console.log(createdUser)
                 updateUserProfile(data.name, data.photo, data.email)
                     .then(() => {
@@ -35,6 +36,7 @@ const Register = () => {
                             .then(data => {
                                 if (data.insertedId) {
                                     reset();
+                                    setError('')
                                     Swal.fire({
                                         position: 'top-end',
                                         icon: 'success',
@@ -66,13 +68,13 @@ const Register = () => {
         <>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
+                    <div className="text-center lg:text-left lg:ml-10">
                         <h1 className="text-5xl font-bold">Register now!</h1>
-                        <div className=''>
-                            <div className='w-96'>
-                                <Lottie animationData={registerFrom} loop={true} />
-                            </div>
+
+                        <div className='w-96'>
+                            <Lottie animationData={registerFrom} loop={true} />
                         </div>
+
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -114,13 +116,14 @@ const Register = () => {
                             </div>
 
 
-                            {/* <div className="form-control">
+                            <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input {...register("confirmPassword", { required: true })} type="password" name="confirmPassword" placeholder="Confirm Password" className="input input-bordered"  />
-                                {errors.confirmPassword !== errors.password  && <span className='text-red-600'>Confirm Password is required</span>}
-                            </div> */}
+                                <input {...register("confirmPassword", { required: true })} type="password" name="confirmPassword" placeholder="Confirm Password" className="input input-bordered" />
+                                {errors.confirmPassword?.type === 'required' && <span className='text-red-600'>Confirm Password is required</span>}
+                                <p className='text-red-600'>{error}</p>
+                            </div>
 
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" type="submit" value="SingUp" />
@@ -129,8 +132,24 @@ const Register = () => {
                             <SocialLogin></SocialLogin>
                         </form >
                     </div>
+
+
+
                 </div>
             </div>
+           
+
+
+
+
+
+
+
+
+
+
+
+
         </>
     );
 };

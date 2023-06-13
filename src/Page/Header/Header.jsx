@@ -8,7 +8,7 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
     const [isAdmin] = adminUsers()
-    const [isInstructors] = instructorsUsers() 
+    const [isInstructors] = instructorsUsers()
     const handleLogOut = () => {
         logOut()
             .then(result => {
@@ -30,23 +30,23 @@ const Header = () => {
         <li> <NavLink to='/classes' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Classes
         </NavLink></li>
-       
-        
+
+
         {
             user && <li> <NavLink to={
                 isAdmin
-                  ? "/dashboard/mangeUsers"
-                  :isInstructors
-                  ? "/dashboard/myClass"
-                  : "/dashboard/mySelectedClass"
-              } title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
-            Dashboard
-        </NavLink></li>
+                    ? "/dashboard/mangeUsers"
+                    : isInstructors
+                        ? "/dashboard/myClass"
+                        : "/dashboard/mySelectedClass"
+            } title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+                Dashboard
+            </NavLink></li>
         }
 
 
 
-       
+
 
 
 
@@ -58,9 +58,9 @@ const Header = () => {
     return (
         <>
 
-            
-            {/* <div className="navbar  lg:px-28 py-5 fixed z-10  bg-opacity-30 bg-black lg:text-white"> */}
-            <div className="navbar  lg:px-28 py-5 bg-lime-100">
+
+            <div className="navbar  lg:px-28 py-5 z-10   bg-green-200  sticky">
+
 
 
                 <div className="navbar">
@@ -69,12 +69,14 @@ const Header = () => {
                             <label tabIndex={0} className="btn btn-ghost lg:hidden text-black">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </label>
-                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-sky-200 text-black rounded-box w-52">
                                 {navBarOptions}
                             </ul>
                         </div>
-                        <img className='rounded-full w-20' src={logo} alt="" />
+                      <div className='w-full md:flex md:justify-center md:items-center'>
+                      <img className='rounded-full w-20' src={logo} alt="" />
                         <a className=" normal-case text-xl px-2 text-violet-600">Sports academies</a>
+                      </div>
                     </div>
                     <div className="navbar-center hidden lg:flex ">
                         <ul className="menu menu-horizontal px-1 ">
@@ -92,15 +94,18 @@ const Header = () => {
                                                 title={user && user.displayName} src={user && user.photoURL} />
                                         </div>
                                     </label>
-                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 text-black rounded-box w-52">
+                                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-sky-200 text-black rounded-box w-52">
                                         <li><Link to='/login' className='font-bold' onClick={handleLogOut}>Logout</Link></li>
                                     </ul>
                                 </div>
                             </div>
 
-                        </> : <> <li className='btn btn-accent text-black'> <NavLink  to='/login' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
-                                Login
-                            </NavLink></li></>
+                        </> : <div className='navbar-end'>
+                        <li className='btn btn-accent btn-md text-black '> <NavLink to='/login' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+                            Login
+                        </NavLink></li>
+                            
+                            </div>
                     }
                 </div>
 
