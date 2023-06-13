@@ -4,7 +4,7 @@ import PopularClass from './PopularClass';
 
 const Popular = () => {
     const { data: popularClasses = [] } = useQuery(['popularClasses'], async () => {
-        const res = await fetch(`http://localhost:4000/popularClasses`)
+        const res = await fetch(`https://sports-academies-server-fawn.vercel.app/popularClasses`)
         return res.json()
     })
 

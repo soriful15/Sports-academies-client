@@ -17,7 +17,7 @@ const CheckOutFrom = ({ paymentData, price }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:4000/approvedClasses`)
+        fetch(`https://sports-academies-server-fawn.vercel.app/approvedClasses`)
             .then(res => res.json())
             .then(data => {
                 setClasses(data)
@@ -90,7 +90,7 @@ const CheckOutFrom = ({ paymentData, price }) => {
             const updatedSeat = classes.map((cls) => {
 
                 if (cls._id === paymentData.selectedItemId) {
-                    fetch(`http://localhost:4000/updatedClass/${paymentData.selectedItemId}`, {
+                    fetch(`https://sports-academies-server-fawn.vercel.app/updatedClass/${paymentData.selectedItemId}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json'

@@ -8,7 +8,7 @@ const MyClass = () => {
     const { user } = useAuth()
 
     // const { data: allClasses = [] } = useQuery(['allClasses'], async () => {
-    //     const res = await fetch(`http://localhost:4000/allClasses`)
+    //     const res = await fetch(`https://sports-academies-server-fawn.vercel.app/allClasses`)
     //     return res.json()
     // })
 

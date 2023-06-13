@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 const Instructors = () => {
 
     const { data: instructorClasses = [] } = useQuery(['instructorClasses'], async () => {
-        const res = await fetch(`http://localhost:4000/instructorClasses`)
+        const res = await fetch(`https://sports-academies-server-fawn.vercel.app/instructorClasses`)
         return res.json()
 
 

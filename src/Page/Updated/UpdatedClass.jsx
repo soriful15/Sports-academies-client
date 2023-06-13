@@ -17,7 +17,7 @@ const UpdatedClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-        fetch(`http://localhost:4000/allClasses/${_id}`, {
+        fetch(`https://sports-academies-server-fawn.vercel.app/allClasses/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

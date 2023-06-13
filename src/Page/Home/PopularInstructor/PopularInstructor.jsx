@@ -4,7 +4,7 @@ import React from 'react';
 const PopularInstructor = () => {
 
     const { data: instructorClasses = [] } = useQuery(['popularInstructorClasses'], async () => {
-        const res = await fetch(`http://localhost:4000/popularInstructorClasses`)
+        const res = await fetch(`https://sports-academies-server-fawn.vercel.app/popularInstructorClasses`)
         return res.json()
 
 

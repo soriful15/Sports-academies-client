@@ -28,7 +28,7 @@ const ClassesCard = ({ classes }) => {
         selectedItemId: _id, classesImg, name: user.displayName,
         email: user.email, classesName, seats, price
       }
-      fetch(`http://localhost:4000/carts`, {
+      fetch(`https://sports-academies-server-fawn.vercel.app/carts`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json'

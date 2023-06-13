@@ -81,7 +81,7 @@ const router = createBrowserRouter([
         path: 'allClasses/:id',
         // element: <InstructorsRoutes><UpdatedClass></UpdatedClass></InstructorsRoutes>,
         element: <UpdatedClass></UpdatedClass>,
-        loader: ({ params }) => fetch(`http://localhost:4000/allClasses/${params.id}`)
+        loader: ({ params }) => fetch(`https://sports-academies-server-fawn.vercel.app/allClasses/${params.id}`)
       },
       {
         path: 'mySelectedClass',
@@ -98,7 +98,7 @@ const router = createBrowserRouter([
       {
         path: 'Payments/:id',
         element:<Payments></Payments>,
-        loader:({params})=>fetch(`http://localhost:4000/carts/${params.id}`)
+        loader:({params})=>fetch(`https://sports-academies-server-fawn.vercel.app/carts/${params.id}`)
       },
 
     ]

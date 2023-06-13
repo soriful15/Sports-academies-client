@@ -8,7 +8,7 @@ const MangeUsers = () => {
     const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure();
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        // const res = await fetch(`http://localhost:4000/users`)
+        // const res = await fetch(`https://sports-academies-server-fawn.vercel.app/users`)
         const res = await axiosSecure.get(`/users`)
         // return res.json()
         return res.data
@@ -16,7 +16,7 @@ const MangeUsers = () => {
     })
     const handleAdminBtn = (user) => {
         console.log(user)
-        fetch(`http://localhost:4000/users/admin/${user._id}`, {
+        fetch(`https://sports-academies-server-fawn.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH',
         })
             .then(res => res.json())
@@ -37,7 +37,7 @@ const MangeUsers = () => {
 
     const handleInstructorBtn = (user) => {
         console.log(user)
-        fetch(`http://localhost:4000/users/instructors/${user._id}`, {
+        fetch(`https://sports-academies-server-fawn.vercel.app/users/instructors/${user._id}`, {
             method: 'PATCH',
         })
             .then(res => res.json())

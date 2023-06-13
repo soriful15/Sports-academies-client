@@ -10,7 +10,7 @@ import useAxiosSecure from '../hooks/useAxioSecure';
 const MangeClasses = () => {
     // const { user } = useAuth()
     // const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
-    //     const res = await fetch(`http://localhost:4000/allClasses`)
+    //     const res = await fetch(`https://sports-academies-server-fawn.vercel.app/allClasses`)
     //     return res.json()
     // })
     // console.log(allClasses)
@@ -27,7 +27,7 @@ const MangeClasses = () => {
 
     const handleApprovedBtn = (id) => {
         console.log(user)
-        fetch(`http://localhost:4000/updatedStatusApproved/${id}`, {
+        fetch(`https://sports-academies-server-fawn.vercel.app/updatedStatusApproved/${id}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -46,7 +46,7 @@ const MangeClasses = () => {
     }
     const handleDenyBtn = (id) => {
         console.log(user)
-        fetch(`http://localhost:4000/updatedStatusDeny/${id}`, {
+        fetch(`https://sports-academies-server-fawn.vercel.app/updatedStatusDeny/${id}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -75,7 +75,7 @@ const MangeClasses = () => {
 
         const classFeedback = { feedBack, id }
         console.log(classFeedback);
-        fetch(`http://localhost:4000/updatedStatusFeedBack/${id}`, {
+        fetch(`https://sports-academies-server-fawn.vercel.app/updatedStatusFeedBack/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

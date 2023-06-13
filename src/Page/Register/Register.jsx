@@ -27,7 +27,7 @@ const Register = () => {
                     .then(() => {
                         // console.log('update Profile')
                         const saveUser = { name: data.name, image: data.photoURL, email: data.email, }
-                        fetch('http://localhost:4000/users', {
+                        fetch('https://sports-academies-server-fawn.vercel.app/users', {
                             method: 'POST',
                             headers: { 'content-type': 'application/json' },
                             body: JSON.stringify(saveUser)
