@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../SocailLogin/SocialLogin';
+import { Helmet } from 'react-helmet-async';
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
@@ -66,6 +67,10 @@ const Register = () => {
 
     return (
         <>
+
+<Helmet>
+        <title>Sport Academic | Register  Page</title>
+      </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left lg:ml-10">

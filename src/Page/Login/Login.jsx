@@ -6,6 +6,7 @@ import login from '../../assets/94113-login.json'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 const Login = () => {
     const { singIn } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -44,6 +45,10 @@ const Login = () => {
 
     return (
         <>
+
+<Helmet>
+        <title>Sport Academic | Login  Page</title>
+      </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">

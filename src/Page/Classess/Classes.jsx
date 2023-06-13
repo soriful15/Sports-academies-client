@@ -1,6 +1,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import ClassesCard from './ClassesCard';
+import { Helmet } from 'react-helmet-async';
 const Classes = () => {
     const { data: allClasses = [], } = useQuery(['approvedClasses'], async () => {
         const res = await fetch(`https://sports-academies-server-fawn.vercel.app/approvedClasses`)
@@ -12,6 +13,11 @@ const Classes = () => {
     console.log(allClasses)
     return (
         <>
+
+<Helmet>
+        <title>Sport Academic | Classes Page</title>
+      </Helmet>
+
 
             <h1 className='lg:text-2xl text-base font-bold text-zinc-600 text-center mt-6'>Hi! Student Enrolled Classes </h1>
           

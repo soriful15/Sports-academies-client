@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import Swal from 'sweetalert2';
 import { useLoaderData } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const UpdatedClass = () => {
     const updatedData = useLoaderData()
@@ -45,6 +46,10 @@ const UpdatedClass = () => {
 
     return (
         <>
+<Helmet>
+        <title>Sport Academic | Updated  Page</title>
+      </Helmet>
+
             <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To Updated Class</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 

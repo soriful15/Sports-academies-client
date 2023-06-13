@@ -1,5 +1,6 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 const Instructors = () => {
 
     const { data: instructorClasses = [] } = useQuery(['instructorClasses'], async () => {
@@ -10,6 +11,10 @@ const Instructors = () => {
     })
     return (
         <>
+
+<Helmet>
+        <title>Sport Academic | Instructor  Page</title>
+      </Helmet>
             <h1 className='text-2xl text-center font-bold text-zinc-600 mt-9'>Sport Academic:All Instructor</h1>
             <div className="border-t-4 border-orange-200 mt-5 mb-5 w-3/4 mx-auto "></div>
 

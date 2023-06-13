@@ -4,6 +4,7 @@ import useCart from '../../hooks/useCart';
 import { FaTrash, FaCcStripe } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 const MySelectClass = () => {
     const { user } = useAuth()
     const [cart, refetch] = useCart()
@@ -39,6 +40,10 @@ const MySelectClass = () => {
 
     return (
         <>
+
+<Helmet>
+        <title>Sport Academic | Selected Page</title>
+      </Helmet>
             <h1 className='lg:text-3xl text-lg  lg:font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To Select Class</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
             <h1 className='lg:text-3xl text-lg  mt-4 mb-4 text-emerald-300'>Total ClassItem: {cart.length}</h1>

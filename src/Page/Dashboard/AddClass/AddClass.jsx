@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import useAxiosSecure from '../../hooks/useAxioSecure';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 const img_hosting_token = import.meta.env.VITE_img_upload_token
@@ -58,6 +59,11 @@ const AddClass = () => {
 
     return (
         <>
+
+<Helmet>
+        <title>Sport Academic | AddClass Page</title>
+      </Helmet>
+
             <h1 className='lg:text-3xl text-lg font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 

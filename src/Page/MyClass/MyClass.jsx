@@ -3,6 +3,7 @@ import useAuth from '../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../hooks/useAxioSecure';
+import { Helmet } from 'react-helmet-async';
 
 const MyClass = () => {
     const { user } = useAuth()
@@ -26,6 +27,10 @@ const MyClass = () => {
     console.log(allClasses)
     return (
         <>
+
+<Helmet>
+        <title>Sport Academic | My Class  Page</title>
+      </Helmet>
             <h1 className='lg:text-3xl text-lg font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 

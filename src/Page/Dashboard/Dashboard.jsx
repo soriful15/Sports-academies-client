@@ -6,6 +6,7 @@ import { HiUserAdd } from "react-icons/hi";
 import adminUsers from '../hooks/adminUsers';
 import instructorsUsers from '../hooks/instructorsUsers';
 import useAuth from '../hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 const Dashboard = () => {
     const [isAdmin] = adminUsers()
     const [isInstructors] = instructorsUsers()
@@ -14,6 +15,10 @@ const Dashboard = () => {
     // const isInstructors=false
     return (
         <>
+  <Helmet>
+        <title>Sport Academic | DashBoard Page</title>
+      </Helmet>
+
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
