@@ -82,7 +82,6 @@ const Header = () => {
     return (
         <>
 
-
             <div className="navbar  lg:px-28 py-5 z-10   bg-green-200  sticky dark:bg-black dark:text-white">
 
 
