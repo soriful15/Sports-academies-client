@@ -58,15 +58,15 @@ const AddClass = () => {
 
     return (
         <>
-            <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
+            <h1 className='lg:text-3xl text-lg font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 
             <div className='container mx-auto px-3'>
 
-                <h1 className='text-center mt-10 text-4xl text-sky-800 '>Add  Classes</h1>
+                <h1 className='text-center mt-10 lg:text-4xl text-lg text-sky-800 '>Add  Classes</h1>
 
 
-                <form onSubmit={handleSubmit(onSubmit)} className='mt-16'>
+                <form onSubmit={handleSubmit(onSubmit)} className='mt-16 lg:px-7'>
                     {errors.exampleRequired && <span>This field is required</span>}
                     <div className='grid lg:grid-cols-2 gap-4 px-2'>
 

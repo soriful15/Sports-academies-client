@@ -31,6 +31,7 @@ const useAxiosSecure = () => {
       }
     );
   }, [logOut, navigate]);
+  
 
   return [axiosSecure];
 };

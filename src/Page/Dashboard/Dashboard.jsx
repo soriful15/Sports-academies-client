@@ -1,12 +1,17 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-// import { FaShoppingCart, FaWallet, FaHome, FaCalendarAlt, FaBars, FaShoppingBag,  FaBook, FaUser } from 'react-icons/fa';
+// import { FaShoppingCart, FaWallet, FaHome, FaUserTie, FaUser } from 'react-icons/fa';
+import { FaUserTie, FaUsers, FaWallet, FaHome, FaClipboardList } from 'react-icons/fa';
+import { HiUserAdd } from "react-icons/hi";
 import adminUsers from '../hooks/adminUsers';
 import instructorsUsers from '../hooks/instructorsUsers';
+import useAuth from '../hooks/useAuth';
 const Dashboard = () => {
     const [isAdmin] = adminUsers()
-    const [isInstructors] = instructorsUsers() 
-    // const isAdmin = true;
+    const [isInstructors] = instructorsUsers()
+    const { user } = useAuth()
+    // const isAdmin=true;
+    // const isInstructors=false
     return (
         <>
             <div className="drawer lg:drawer-open">
@@ -23,33 +28,42 @@ const Dashboard = () => {
                         {/* Sidebar content here */}
 
 
-
-
+                      
+                        <div className="card   bg-base-100">
+                            <figure className="px-10 pt-10">
+                                <img src={user.photoURL} alt="Shoes" className="rounded-xl w-full" />
+                            </figure>
+                            <div className="card-body items-center text-center text-purple-700 font-bold">
+                            <h2 className="">{user.displayName}</h2>
+                                <p>{user.email}</p>
+                            </div>
+                        </div>
 
 
                         {
                             isAdmin ?
                                 (<>
 
-                                    <li><NavLink to='/dashboard/mangeClasses'> Mange Classes</NavLink ></li>
-                                    <li><NavLink to='/dashboard/mangeUsers'> Mange Users</NavLink ></li>
-                                    
+                                    <li><NavLink to='/dashboard/mangeClasses'><FaUserTie></FaUserTie> Mange Classes</NavLink ></li>
+                                    <li><NavLink to='/dashboard/mangeUsers'><FaUsers></FaUsers> Mange Users</NavLink ></li>
 
-                                </>) :isInstructors ?
+
+                                </>) : isInstructors ?
                                     (<>
-                                        <li><NavLink to='/dashboard/addClasses'> Add Classes</NavLink ></li>
-                                        <li><NavLink to='/dashboard/myClass'>MyClasses</NavLink ></li>
-                                     
+                                        <li><NavLink to='/dashboard/addClasses'><HiUserAdd></HiUserAdd> Add Classes</NavLink ></li>
+                                        <li><NavLink to='/dashboard/myClass'><FaClipboardList></FaClipboardList> MyClasses</NavLink ></li>
+
 
                                     </>) : <>
                                         <li><NavLink to='/dashboard/mySelectedClass'>My Select Class</NavLink ></li>
                                         <li><NavLink to='/dashboard/enrollClass'> My Enroll Class</NavLink ></li>
-                                        <li><NavLink to='/dashboard/paymentHistory'> Payment History</NavLink ></li>
-                                       
+                                        <li><NavLink to='/dashboard/paymentHistory'><FaWallet></FaWallet> Payment History</NavLink ></li>
+
 
                                     </>
                         }
-                         <li><NavLink to='/'>Home</NavLink ></li>
+                        <div className="divider"></div>
+                        <li><NavLink to='/' ><FaHome></FaHome>Home</NavLink ></li>
 
                     </ul>
 

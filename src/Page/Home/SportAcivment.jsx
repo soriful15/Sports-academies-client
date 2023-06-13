@@ -16,7 +16,12 @@ import stu6 from '../../assets/studentPic/stu6.webp'
 const SportAcivment = () => {
   return (
     <>
-      <h1 className='text-center text-sky-700 mt-10 text-xl lg:text-4xl font-medium'>The Sports School Student Achievements</h1>
+  
+
+      <h1 className='text-2xl lg:text-4xl text-center font-bold text-slate-900 mt-9'>The Sports School Student Achievements</h1>
+            <p className='text-center container mx-auto text-lg mt-2 text-gray-500'>Student sport achievements can take various forms, such as winning a championship, setting a new record, earning a scholarship, or representing their school or country in a competitive event. </p>
+
+
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -25,7 +30,7 @@ const SportAcivment = () => {
           clickable: true,
         }}
         modules={[FreeMode, Pagination]}
-        className="mySwiper mt-5 w-full"
+        className="mySwiper mt-5 lg:container lg:mx-auto   w-full"
       >
         <SwiperSlide>
           <img src={stu1} className='md:h-96  h-52  w-full' alt="" />

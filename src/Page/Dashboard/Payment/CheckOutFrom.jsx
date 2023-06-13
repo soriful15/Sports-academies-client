@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../hooks/useAxioSecure';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
-import '../Payment/common.css'
+// import '../Payment/common.css'
 const CheckOutFrom = ({ paymentData, price }) => {
     const [cardError, setCardError] = useState('')
     const stripe = useStripe();

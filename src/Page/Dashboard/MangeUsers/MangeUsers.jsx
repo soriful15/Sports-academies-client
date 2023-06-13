@@ -59,7 +59,7 @@ const MangeUsers = () => {
 
     return (
         <>
-            <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
+            <h1 className='lg:text-3xl text-lg font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 
             <div className='w-3/4 mt-10'>
@@ -67,7 +67,7 @@ const MangeUsers = () => {
                 <div className="overflow-x-auto">
                     <table className="table table-zebra w-full">
                         {/* head */}
-                        <thead>
+                        <thead className='bg-gradient-to-r from-violet-500 to-fuchsia-500 text-black'>
                             <tr>
                                 <th>#</th>
                                 <th>Image</th>
@@ -87,7 +87,7 @@ const MangeUsers = () => {
                                                 <img src={user.image} className='' alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div></th>
-                                        <td>{user.name}</td>
+                                        <td className='text-base font-bold'>{user.name}</td>
                                         <td>{user.email}</td>
                                         <td>
 

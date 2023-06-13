@@ -9,6 +9,9 @@ const Header = () => {
 
     const [isAdmin] = adminUsers()
     const [isInstructors] = instructorsUsers()
+    // const isAdmin=true;
+    // const isInstructors=false
+
     const handleLogOut = () => {
         logOut()
             .then(result => {

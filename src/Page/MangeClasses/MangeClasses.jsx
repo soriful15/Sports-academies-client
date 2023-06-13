@@ -16,8 +16,8 @@ const MangeClasses = () => {
     // console.log(allClasses)
     const { user } = useAuth()
     const [axiosSecure] = useAxiosSecure();
-    const { data: allClasses = [],refetch} = useQuery(['allClasses'], async () => {
-        
+    const { data: allClasses = [], refetch } = useQuery(['allClasses'], async () => {
+
         const res = await axiosSecure.get(`/allClasses`)
         // return res.json()
         return res.data
@@ -65,7 +65,7 @@ const MangeClasses = () => {
     }
 
 
-   
+
 
     const handleFedback = (event) => {
         event.preventDefault()
@@ -103,88 +103,92 @@ const MangeClasses = () => {
 
     return (
         <>
-            <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
+            <h1 className='lg:text-3xl text-lg font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 
 
 
-            <div className="overflow-x-auto w-full">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>
-                                #
-                            </th>
-                            <th>Class Image</th>
-                            <th>Class Name</th>
-                            <th>Instructor Name</th>
-                            <th>Instructor Email</th>
-                            <th>AvailAble Seat</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        {
-                            allClasses.map((allClass, index) =>
-                                <tr key={allClass._id}>
-                                    <th>
-                                        {index + 1}
-                                    </th>
-                                    <td>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="avatar">
-                                                <div className="mask mask-squircle w-12 h-12">
-                                                    <img src={allClass.classesImg} alt="Avatar Tailwind CSS Component" />
+            <div>
+
+
+
+                <div className="overflow-x-auto w-full">
+                    <table className="table">
+                        {/* head */}
+                        <thead className='bg-gradient-to-r from-violet-500 to-fuchsia-500 text-black'>
+                            <tr>
+                                <th>
+                                    #
+                                </th>
+                                <th>Class Image</th>
+                                <th>Class Name</th>
+                                <th>Instructor Name</th>
+                                <th>Instructor Email</th>
+                                <th>AvailAble Seat</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {/* row 1 */}
+                            {
+                                allClasses.map((allClass, index) =>
+                                    <tr key={allClass._id}>
+                                        <th>
+                                            {index + 1}
+                                        </th>
+                                        <td>
+                                            <div className="flex items-center space-x-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={allClass.classesImg} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        {allClass.classesName}
-                                    </td>
-                                    <td>
-                                        {allClass.instructor_name}
-                                    </td>
-                                    <td>{allClass.instructor_email}</td>
-                                    <td>{allClass.seats}</td>
-                                    <td>{allClass.price}</td>
-                                    <td>{allClass.status}</td>
-                                    <th className='gap-2 flex'>
+                                        </td>
+                                        <td className='text-base font-bold'>
+                                            {allClass.classesName}
+                                        </td>
+                                        <td>
+                                            {allClass.instructor_name}
+                                        </td>
+                                        <td>{allClass.instructor_email}</td>
+                                        <td className='text-indigo-700'>{allClass.seats}</td>
+                                        <td className='text-green-800'>${allClass.price}</td>
+                                        <td>{allClass.status}</td>
+                                        <th className='gap-2 flex'>
 
-                                        <button onClick={() => handleApprovedBtn(allClass._id)} disabled={allClass.status === 'approved' ? true : false} className="btn btn-success btn-xs">Approved</button>
-                                        <button className="btn btn-error btn-xs" onClick={() => handleDenyBtn(allClass._id)} disabled={allClass.status === 'deny' ? true : false}   >Deny</button>
+                                            <button onClick={() => handleApprovedBtn(allClass._id)} disabled={allClass.status === 'approved' ? true : false} className="btn btn-success btn-xs">Approved</button>
+                                            <button className="btn btn-error btn-xs" onClick={() => handleDenyBtn(allClass._id)} disabled={allClass.status === 'deny' ? true : false}   >Deny</button>
 
-                                        <label htmlFor={allClass._id} className="btn btn-sm modal-button">
-                                            Feedback
-                                        </label>
-                                        <input type="checkbox" id={allClass._id} className="modal-toggle" />
-                                        <label htmlFor={allClass._id} className="modal cursor-pointer">
-                                            <label className="modal-box relative" htmlFor="">
-                                                <form onSubmit={handleFedback}>
-                                                    <div className="pt-5">
-                                                        <label className="text-black" htmlFor="text">
-                                                            Send Feedback
-                                                        </label>
-                                                        <input type="text" name="id" className="hidden" defaultValue={allClass._id} />
-                                                        <textarea
-                                                            type='text'
-                                                            className=" w-full text-black p-2 lg:p-3 rounded-md focus:outline-none my-2 border border-orange-500"
-                                                            name="feedBack"
-                                                        />
-                                                    </div>
-                                                    <button
-                                                        type="submit"
-                                                        className="group my-6 relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
-                                                    >
-                                                        Send Feedback
-                                                    </button>
-                                                </form>
+                                            <label htmlFor={allClass._id} className="btn btn-sm modal-button">
+                                                Feedback
                                             </label>
-                                        </label>
+                                            <input type="checkbox" id={allClass._id} className="modal-toggle" />
+                                            <label htmlFor={allClass._id} className="modal cursor-pointer">
+                                                <label className="modal-box relative" htmlFor="">
+                                                    <form onSubmit={handleFedback}>
+                                                        <div className="pt-5">
+                                                            <label className="text-black" htmlFor="text">
+                                                                Send Feedback
+                                                            </label>
+                                                            <input type="text" name="id" className="hidden" defaultValue={allClass._id} />
+                                                            <textarea
+                                                                type='text'
+                                                                className=" w-full text-black p-2 lg:p-3 rounded-md focus:outline-none my-2 border border-orange-500"
+                                                                name="feedBack"
+                                                            />
+                                                        </div>
+                                                        <button
+                                                            type="submit"
+                                                            className="group my-6 relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+                                                        >
+                                                            Send Feedback
+                                                        </button>
+                                                    </form>
+                                                </label>
+                                            </label>
 
 
 
@@ -201,19 +205,22 @@ const MangeClasses = () => {
 
 
 
-                                      
 
 
-                                    </th>
-                                </tr>
 
-                            )
-                        }
+                                        </th>
+                                    </tr>
 
-                    </tbody>
-                </table>
+                                )
+                            }
+
+                        </tbody>
+                    </table>
 
 
+
+
+                </div>
 
 
             </div>

@@ -11,6 +11,7 @@ const Instructors = () => {
     return (
         <>
             <h1 className='text-2xl text-center font-bold text-zinc-600 mt-9'>Sport Academic:All Instructor</h1>
+            <div className="border-t-4 border-orange-200 mt-5 mb-5 w-3/4 mx-auto "></div>
 
             <div className='grid lg:grid-cols-3 md:grid-cols-2 container mx-auto mt-10 gap-10'>
                 {

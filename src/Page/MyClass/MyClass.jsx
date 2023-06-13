@@ -26,26 +26,27 @@ const MyClass = () => {
     console.log(allClasses)
     return (
         <>
-            <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
+            <h1 className='lg:text-3xl text-lg font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To DashBoard</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
 
 
 
 
-            <div className="overflow-x-auto w-full">
+          <div>
+              <div className="overflow-x-auto w-full">
                 <table className="table">
                     {/* head */}
-                    <thead>
+                    <thead className='bg-gradient-to-r from-violet-500 to-fuchsia-500 text-black'>
                         <tr>
                             <th>
                                 #
                             </th>
                             <th>Class Image</th>
                             <th>Class Name</th>
-                            <th>AvailAble Seat</th>
+                            <th>Status</th>
                             <th>Total Enrolled</th>
                             <th>Price</th>
-                            <th>Status</th>
+                            <th>AvailAble Seat</th>
                             <th>Feedback</th>
                             <th>Updated</th>
                         </tr>
@@ -67,13 +68,13 @@ const MyClass = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td className='text-base font-bold'>
                                         {allClass.classesName}
                                     </td>
-                                    <td>{allClass.status}</td>
-                                    <td>Total Enrolled</td>
-                                    <td>{allClass.price}</td>
-                                    <td>{allClass.seats}</td>
+                                    <td className='text-yellow-400'>{allClass.status}</td>
+                                    <td className='text-pink-800'> {allClass.enroll ? allClass.enroll : "Not Enroll"}</td>
+                                    <td className='text-green-800'>${allClass.price}</td>
+                                    <td className='text-indigo-700'>{allClass.seats}</td>
                                     <td>
                                         {allClass.feedBack ? allClass.feedBack : "Nothing FeedBack"}
                                     </td>
@@ -88,6 +89,7 @@ const MyClass = () => {
                     </tbody>
                 </table>
             </div>
+          </div>
 
 
         </>
