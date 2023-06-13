@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo/logo.jpg';
 import { AuthContext } from '../../Provider/AuthProvider';
 import adminUsers from '../hooks/adminUsers';
 import instructorsUsers from '../hooks/instructorsUsers';
-import { Fade } from 'react-awesome-reveal';
+import { FaCloudSun, FaMoon } from 'react-icons/fa';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
 
@@ -12,6 +12,37 @@ const Header = () => {
     const [isInstructors] = instructorsUsers()
     // const isAdmin=true;
     // const isInstructors=false
+
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+        if (localStorage.getItem("theme") === null) {
+            localStorage.setItem("theme", "light");
+        }
+    }, [])
+
+    useEffect(() => {
+        const html = document.querySelector("html");
+        if (localStorage.getItem("theme") === "dark") {
+            html.classList.add("dark")
+            setTheme("dark");
+        } else {
+            html.classList.remove("dark");
+            setTheme("light")
+        }
+
+    })
+
+    const handleTheme = () => {
+        if (localStorage.getItem("theme") === "light") {
+            setTheme("dark")
+            localStorage.setItem('theme', 'dark')
+        } else {
+            setTheme("light")
+            localStorage.setItem("theme", "light")
+        }
+    };
+
 
     const handleLogOut = () => {
         logOut()
@@ -24,10 +55,6 @@ const Header = () => {
 
 
     const navBarOptions = <>
-
-      <Fade>
-
-
       <li> <NavLink to='/' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
             Home
         </NavLink></li>
@@ -50,25 +77,13 @@ const Header = () => {
                 Dashboard
             </NavLink></li>
         }
-
-
-
-      </Fade>
-
-
-
-
-
-
-
-
     </>
 
     return (
         <>
 
 
-            <div className="navbar  lg:px-28 py-5 z-10   bg-green-200  sticky">
+            <div className="navbar  lg:px-28 py-5 z-10   bg-green-200  sticky dark:bg-black dark:text-white">
 
 
 
@@ -117,6 +132,16 @@ const Header = () => {
                             </div>
                     }
                 </div>
+
+
+                <div className='md:ml-4 hidden md:block'>
+                    <button onClick={handleTheme}
+                        className=' rounded text-white text-4xl flex justify-center items-center'>
+                        {theme === "light" ? <FaCloudSun /> : <FaMoon />}
+                    </button>
+                </div>
+
+
 
 
             </div>

@@ -22,7 +22,7 @@ const Banner = () => {
     return (
         <>
 
-        <div className="text-center lg:w-11/12 mx-auto mt-5 mb-8">
+        <div className="text-center lg:w-11/12 mx-auto mt-5 mb-8 dark:bg-black dark:text-white">
 
 
         <Carousel className='mt-6 '>
