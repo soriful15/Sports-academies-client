@@ -15,23 +15,22 @@ const EnrollClass = () => {
     })
     return (
         <>
- <h1 className='text-3xl font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To Enroll DashBoard</h1>
+ <h1 className='lg:text-3xl text-lg font-bold my-3 text-center'>Hello <span className='text-violet-700'>{user && user.displayName}</span> Welcome To Enroll DashBoard</h1>
             <div className="border-t-4 border-orange-700 mb-5 w-3/4 mx-auto "></div>
-            <div className="overflow-x-auto w-full">
+            <div className="overflow-x-auto w-full px-5">
                 <table className="table">
                     {/* head */}
-                    <thead>
+                    <thead className='bg-gradient-to-r from-violet-500 to-fuchsia-500 text-black'>
                         <tr>
                             <th>
                                 #
                             </th>
                             <th>Class Image</th>
                             <th>Class Name</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Seat</th>
+                            <th>Instructor name</th>
+                            <th>Enrolled Date</th>
                             <th>Price</th>
-                            <th>SelectedId</th>
+                            <th>Status</th>
                            
                         </tr>
                     </thead>
@@ -52,16 +51,15 @@ const EnrollClass = () => {
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td className='text-base font-bold'>
                                         {payment.classesName}
                                     </td>
                                     <td>
                                         {payment.name}
                                     </td>
-                                    <td>{payment.email}</td>
-                                    <td>{payment.seats}</td>
-                                    <td>{payment.price}</td>
-                                    <td>{payment.selectedId}</td>
+                                    <td>{payment.date}</td>
+                                    <td>${payment.price}</td>
+                                    <td><button className='btn btn-secondary'>Paid</button></td>
                                 </tr>
 
                             )

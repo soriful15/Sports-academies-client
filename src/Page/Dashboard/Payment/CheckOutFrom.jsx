@@ -146,7 +146,10 @@ const CheckOutFrom = ({ paymentData, price }) => {
         <>
 
 
-            <form className='w-2/3 mt-4' onSubmit={handleSubmit}>
+           <div className='lg:w-1/2 mt-10 mx-auto border-2 lg:px-4 lg:py-4 border-orange-950 px-1 py-3'>
+
+
+           <form className='w-2/3 mt-4' onSubmit={handleSubmit}>
                 <CardElement
                     options={{
                         style: {
@@ -169,8 +172,10 @@ const CheckOutFrom = ({ paymentData, price }) => {
                 </button>
 
             </form>
+
             {cardError && <p className='text-red-700 text-center'>{cardError}</p>}
             {transactionId && <p className='text-green-600 mt-4 text-center'> transactionId complete:{transactionId}</p>}
+           </div>
 
 
 

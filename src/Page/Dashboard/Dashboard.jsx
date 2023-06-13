@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 // import { FaShoppingCart, FaWallet, FaHome, FaUserTie, FaUser } from 'react-icons/fa';
-import { FaUserTie, FaUsers, FaWallet, FaHome, FaClipboardList } from 'react-icons/fa';
+import { FaUserTie, FaUsers, FaWallet, FaHome, FaClipboardList,FaClipboard,FaClipboardCheck } from 'react-icons/fa';
 import { HiUserAdd } from "react-icons/hi";
 import adminUsers from '../hooks/adminUsers';
 import instructorsUsers from '../hooks/instructorsUsers';
@@ -55,8 +55,8 @@ const Dashboard = () => {
 
 
                                     </>) : <>
-                                        <li><NavLink to='/dashboard/mySelectedClass'>My Select Class</NavLink ></li>
-                                        <li><NavLink to='/dashboard/enrollClass'> My Enroll Class</NavLink ></li>
+                                        <li><NavLink to='/dashboard/mySelectedClass'><FaClipboardCheck></FaClipboardCheck> My Select Class</NavLink ></li>
+                                        <li><NavLink to='/dashboard/enrollClass'><FaClipboard></FaClipboard> My Enroll Class</NavLink ></li>
                                         <li><NavLink to='/dashboard/paymentHistory'><FaWallet></FaWallet> Payment History</NavLink ></li>
 
 
