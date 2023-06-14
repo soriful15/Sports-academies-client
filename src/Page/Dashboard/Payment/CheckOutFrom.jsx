@@ -101,7 +101,7 @@ const CheckOutFrom = ({ paymentData, price }) => {
                     })
                         .then(res => res.json())
                         .then(updatedClass => {
-                            console.log('availaable set ', updatedClass)
+                            console.log('available set ', updatedClass)
                         })
                 }
             })

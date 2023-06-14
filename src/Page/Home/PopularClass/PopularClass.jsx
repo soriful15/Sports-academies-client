@@ -73,7 +73,7 @@ const { classesImg, instructor_name, classesName, seats, price, _id } = classes
 
     return (
         <>
-            <div className={`card card-compact w-full bg-base-100  ${seats === 0 ? 'bg-red-500' : 'shadow-xl'}`}>
+            <div className={`card card-compact w-full bg-base-100  ${seats === 0 ? 'bg-red-500' : 'shadow-xl'} dark:bg-black dark:text-white`}>
                 <figure><img src={classesImg} className='h-72 w-full' alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title text-black">Sports Name: {classesName}</h2>

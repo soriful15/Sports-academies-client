@@ -37,6 +37,7 @@ const Dashboard = () => {
                         <div className="card   bg-base-100">
                             <figure className="px-10 pt-10">
                                 <img src={user.photoURL} alt="Shoes" className="rounded-xl w-full" />
+                                {console.log(user.image)}
                             </figure>
                             <div className="card-body items-center text-center text-purple-700 font-bold">
                             <h2 className="">{user.displayName}</h2>

@@ -13,6 +13,8 @@ const PopularInstructor = () => {
 
     return (
         <>
+            <div className='dark:bg-black dark:text-white px-2 py-2'>
+
             <h1 className='text-2xl lg:text-4xl text-center font-bold text-slate-900 mt-9'>Popular Instructors</h1>
             <p className='text-center container mx-auto text-lg mt-2 text-gray-500'>A popular sport instructor is a skilled and experienced professional who specializes in teaching and coaching a specific sport <br /> to individuals or groups. They possess in-depth knowledge of the sport's rules, techniques, and strategies, and are passionate about sharing their expertise with other</p>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 container mx-auto mt-10 gap-10'>
@@ -27,6 +29,8 @@ const PopularInstructor = () => {
                     </div>)
 
                 }
+            </div>
+
             </div>
         </>
     );
