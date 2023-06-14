@@ -24,7 +24,7 @@ const Register = () => {
                 const createdUser = result.user
 
                 console.log(createdUser)
-                updateUserProfile(data.name, data.photo, data.email)
+                updateUserProfile(data.name, data.photoURL, data.email)
                     .then(() => {
                         // console.log('update Profile')
                         const saveUser = { name: data.name, image: data.photoURL, email: data.email, }
