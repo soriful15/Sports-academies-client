@@ -54,13 +54,13 @@ const Login = () => {
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Login now!</h1>
                         <div className=''>
-                            <div className='w-96'>
+                            <div className='md:w-96'>
                                 <Lottie animationData={login} loop={true} />
                             </div>
                         </div>
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body w-full">
 
                             <div className="form-control">
                                 <label className="label">

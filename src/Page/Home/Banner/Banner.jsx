@@ -1,11 +1,4 @@
 
-// https://thesportsschool.com/
-// https://www.aspire.qa/Home
-
-// nicher ta valo kore dekhte hoe
-// https://sportstaracademy.com/cricket   
-
-
 import { Slide, } from "react-awesome-reveal";
 import React from 'react';
 import banner1 from '../../../assets/bannerPic/cricket.jpeg'
