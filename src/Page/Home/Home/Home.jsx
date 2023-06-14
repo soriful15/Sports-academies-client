@@ -5,7 +5,7 @@ import SportAcivment from '../SportAcivment';
 import PopularInstructor from '../PopularInstructor/PopularInstructor';
 import Popular from '../PopularClass/Popular';
 import { Helmet } from 'react-helmet-async';
-// import MoreExtraSection from './MoreExtraSection/MoreExtraSection';
+import MoreExtraSection from './MoreExtraSection/MoreExtraSection';
 // import OurAcademy from '../OurAcademy/OurAcademy';
 
 const Home = () => {
@@ -21,7 +21,7 @@ const Home = () => {
             <PopularInstructor></PopularInstructor>
             <SportAcivment></SportAcivment>
             {/* <OurAcademy></OurAcademy> */}
-            {/* <MoreExtraSection></MoreExtraSection> */}
+            <MoreExtraSection></MoreExtraSection>
         </div>
     );
 };

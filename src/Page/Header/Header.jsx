@@ -129,7 +129,7 @@ const Header = () => {
                             </div>
 
                         </> : <div className='navbar-end'>
-                            <li className='btn btn-accent btn-md text-black '> <NavLink to='/login' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
+      <li className='btn btn-accent btn-md text-black '> <NavLink to='/login' title='' className={({ isActive }) => isActive ? "text-blue-600" : ''}>
                                 Login
                             </NavLink></li>
 
@@ -138,12 +138,7 @@ const Header = () => {
                 </div>
 
 
-                {/* <div className='md:ml-4 hidden md:block'>
-                    <button onClick={handleTheme}
-                        className=' rounded text-white text-4xl flex justify-center items-center'>
-                        {theme === "light" ? <FaCloudSun className='text-indigo-900' /> : <FaMoon className='text-white' />}
-                    </button>
-                </div> */}
+                
 
 
 
