@@ -1,16 +1,16 @@
 
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/free-mode";
-// import "swiper/css/pagination";
-// import { FreeMode, Pagination } from "swiper";
-
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { Pagination } from "swiper";
+import { FreeMode, Pagination } from "swiper";
+
+
+
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import { Pagination } from "swiper";
 
 
 
@@ -29,7 +29,7 @@ const SportAcivment = () => {
     <>
 
 
-      {/* <div className="dark:bg-black dark:text-white px-2 py-2">
+      <div className="dark:bg-black dark:text-white px-2 py-2">
 
 
         <h1 className='text-2xl lg:text-4xl text-center font-bold text-slate-900 mt-9'>The Sports School Student Achievements</h1>
@@ -96,12 +96,12 @@ const SportAcivment = () => {
       </div>
 
 
- */}
 
 
 
 
 
+{/* 
       <div className="dark:bg-black dark:text-white px-2 py-2">
       <h1 className='text-2xl lg:text-4xl text-center font-bold text-slate-900 mt-9 dark:text-white'>The Sports School Student Achievements</h1>
       <p className='text-center container mx-auto text-lg mt-2 text-gray-500 dark:text-white'>Student sport achievements can take various forms, such as winning a championship, setting a new record, earning a scholarship, or representing their school or country in a competitive event. </p>
@@ -159,7 +159,7 @@ const SportAcivment = () => {
 
 
 
-      </div>
+      </div> */}
 
 
 
