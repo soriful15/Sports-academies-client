@@ -14,7 +14,7 @@ const SocialLogin = () => {
         .then((result) => {
             const loggedInUser = result.user;
             console.log(loggedInUser)
-            const saveUser = { name: loggedInUser.displayName,  image: loggedInUser. photoURL ,  email: loggedInUser.email,}
+            const saveUser = { name: loggedInUser.displayName,  image: loggedInUser.photoURL ,  email: loggedInUser.email,}
             fetch('https://sports-academies-server-fawn.vercel.app/users', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },

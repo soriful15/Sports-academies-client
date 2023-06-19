@@ -16,7 +16,7 @@ const MoreExtraSection = () => {
                     <h1 className='text-lg  text-center text-lime-600  mt-2'>PROGRAMS AND COURSES</h1>
                     <p className='text-sm text-slate-700 font-normal text-center mt-3'>Sport Academy  is a skills-based  program and course that will reshape the way kids learn and play</p>
                     <div className='text-center mt-4'><button className='btn btn-accent'>Program</button></div>
-                    <img className='w-full h-72' src={pic} alt="" />
+                    <img className='w-full h-72 mt-2' src={pic} alt="" />
                 </div>
                 <div className='mx-auto grid grid-flow-row'>
                     <img className='w-full h-72' src={pic2} alt="" />
