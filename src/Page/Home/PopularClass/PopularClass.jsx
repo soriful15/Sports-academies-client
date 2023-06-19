@@ -5,9 +5,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 // import useCart from '../../hooks/useCart';
-
+import { FaUsers } from "react-icons/fa";
 const PopularClass = ({ classes }) => {
-const { classesImg, instructor_name, classesName, seats, price, _id } = classes
+const { classesImg, instructor_name, classesName, seats, price, _id,enroll } = classes
     const [isAdmin] = adminUsers()
     const [isInstructors] = instructorsUsers()
     const { user } = useContext(AuthContext)
@@ -80,6 +80,7 @@ const { classesImg, instructor_name, classesName, seats, price, _id } = classes
                     <p className='font-semibold text-blue-800 text-lg'>Instructor Name: {instructor_name}</p>
                     <p className='text-lg text-emerald-700'>Available seats: <span className={seats === 0 ? "text-red-400" : ''}>{parseInt(seats)}</span></p>
                     <p className='text-base text-purple-700'>Price:${parseInt(price)}</p>
+                    <p className='text-base font-bold text-cyan-400 flex items-center justify-center gap-2'>Totall Enroll:<FaUsers></FaUsers>({parseInt(enroll)})</p>
                     <div className="card-actions">
                         <button onClick={() => handleAddSelect(classes)} disabled={seats === 0 || isAdmin || isInstructors} className={`btn btn-primary w-full ${seats === 0 || isAdmin || isInstructors ? "disabled" : ""}`}>Add to Select</button>
                     </div>
